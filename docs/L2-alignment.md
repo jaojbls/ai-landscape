@@ -1,4 +1,4 @@
-# T2 Alignment
+# Alignment — Making the Model Yours
 
 > **Living Stack — Tier 2** | The part that changes **weekly/monthly**
 >

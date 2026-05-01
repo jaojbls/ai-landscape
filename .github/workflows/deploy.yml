@@ -35,8 +35,5 @@ jobs:
       - name: Install MkDocs
         run: pip install mkdocs-material
         
-      - name: Merge files for single-page build
-        run: node .github/scripts/merge_docs.mjs
-      
       - name: Deploy
         run: mkdocs gh-deploy --force

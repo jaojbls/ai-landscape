@@ -3,7 +3,19 @@ site_description: Documentation for AI architectures, tools, and foundations.
 site_url: https://jaojbls.github.io/ai-landscape/
 
 nav:
-  - 📚 Full Reference: index.md
+  - 🧱 Overview: index.md
+  - 🥞 AI Stack Layers:
+      - L1 Model Architectures: 01-model-architectures.md
+      - L2 Training & Adaptation: 02-training-adaptation.md
+      - L3 Hardware: 03-hardware.md
+      - L4 Model Formats: 04-model-formats.md
+      - L5 Inference Engines: 05-inference-engines.md
+      - L6 Tools: 06-tools.md
+      - L7 LLM Extensions: 07-llm-extensions.md
+  - 🌱 Living Stack Tiers:
+      - T1 Foundation: L1-foundation.md
+      - T2 Alignment: L2-alignment.md
+      - T3 Adaptability: L3-adaptability.md
 
 theme:
   name: material
@@ -23,6 +35,7 @@ theme:
   
   features:
     - navigation.sections
+    - navigation.instant
     - search.suggest
     - search.highlight
     - toc.integrate
