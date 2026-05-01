@@ -49,18 +49,35 @@
    LEFT SIDEBAR / TOC STYLING
    ========================================================================== */
 
-/* Target only the nested Table of Contents links (which always have a hash #) */
-.md-nav__link[href*="#"] {
-  font-size: 0.75rem !important;        /* Smaller font */
-  line-height: 1.2 !important;
-  padding-top: 0.25rem !important;      /* Tighter vertical spacing */
-  padding-bottom: 0.25rem !important;
-  color: var(--md-default-fg-color--light) !important; /* Softer color */
+/* Make the TOC container tighter */
+.md-nav__item--active > .md-nav__list {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-/* Highlight the active/hovered section in the TOC */
+/* Target all Table of Contents links (which always have a hash #) */
+.md-nav__link[href*="#"] {
+  font-size: 0.7rem !important; /* Noticeably smaller than the 0.8rem default */
+  line-height: 1.15 !important;
+  
+  /* Ultra-compact vertical padding */
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+  
+  /* Softer neutral color so it recedes into the background */
+  color: #6b7280 !important; 
+  font-weight: 400 !important;
+}
+
+/* De-emphasize nested items (like "At a Glance" under an H2) even more */
+.md-nav__list .md-nav__list .md-nav__link[href*="#"] {
+  font-size: 0.65rem !important;
+  color: #9ca3af !important;
+}
+
+/* Active and Hover States - "The Blueish Colour" */
 .md-nav__link[href*="#"]:hover,
 .md-nav__link[href*="#"].md-nav__link--active {
-  color: var(--md-primary-color) !important;
+  color: #4051b5 !important; /* MkDocs Indigo Blue */
   font-weight: 600 !important;
 }
