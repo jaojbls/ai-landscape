@@ -1,10 +1,10 @@
-# 🧱 Building Blocks of AI v2 — Overview
+# 🧱 AI Building Blocks — Overview
 
 > **Main entry point.** Start here for the big picture, then follow links to the deep-dives.
 
 ---
 
-## The AI Stack: 7 Layers
+### The AI Stack: 7 Layers
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -152,7 +152,7 @@
 
 ---
 
-## The Full Path: End-to-End Example
+### The Full Path: End-to-End Example
 
 ```
 1. Model:      Llama 3.1 70B (Transformer LLM, autoregressive, MoE)
@@ -166,7 +166,7 @@
 
 ---
 
-## The Living Stack — A Second View
+### The Living Stack — A Second View
 
 The 7-layer stack above is a **technology catalog** — "what are the building blocks?" The Living Stack is a **practitioner workflow** — "how do I customize AI for my use case?"
 
@@ -217,7 +217,7 @@ These are two views of the same system:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### How the Two Stacks Relate
+#### How the Two Stacks Relate
 
 | Living Stack Tier | Maps To Layers | Perspective |
 |:--|:--|:--|
@@ -228,28 +228,27 @@ These are two views of the same system:
 
 ---
 
-## Document Index
 
-# AI Stack Layers
+## AI Stack Layers
 
-{% include '01-model-architectures.md' %}
+{% include "01-model-architectures.md" heading-offset=2 %}
 
-{% include '02-training-adaptation.md' %}
+{% include "02-training-adaptation.md" heading-offset=2 %}
 
-{% include '03-hardware.md' %}
+{% include "03-hardware.md" heading-offset=2 %}
 
-{% include '04-model-formats.md' %}
+{% include "04-model-formats.md" heading-offset=2 %}
 
-{% include '05-inference-engines.md' %}
+{% include "05-inference-engines.md" heading-offset=2 %}
 
-{% include '06-tools.md' %}
+{% include "06-tools.md" heading-offset=2 %}
 
-{% include '07-llm-extensions.md' %}
+{% include "07-llm-extensions.md" heading-offset=2 %}
 
-# Living Stack Tiers
+## Living Stack Tiers
 
-{% include 'L1-foundation.md' %}
+{% include "L1-foundation.md" heading-offset=2 %}
 
-{% include 'L2-alignment.md' %}
+{% include "L2-alignment.md" heading-offset=2 %}
 
-{% include 'L3-adaptability.md' %}
+{% include "L3-adaptability.md" heading-offset=2 %}
