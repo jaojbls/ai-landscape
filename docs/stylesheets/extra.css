@@ -81,3 +81,35 @@
   color: #4051b5 !important; /* MkDocs Indigo Blue */
   font-weight: 600 !important;
 }
+
+/* ==========================================================================
+   SCROLLBAR FIX (Never expand, never change color)
+   ========================================================================== */
+
+/* Universal scrollbar reset for MkDocs Material */
+::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+}
+
+/* Prevent expansion on hover */
+:hover::-webkit-scrollbar,
+.md-sidebar__scrollwrap:hover::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+}
+
+/* Keep the thumb a slim, neutral grey at all times (never blue/yellow) */
+::-webkit-scrollbar-thumb,
+:hover::-webkit-scrollbar-thumb,
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb,
+.md-sidebar__scrollwrap:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(150, 150, 150, 0.4) !important;
+  border-radius: 4px !important;
+}
+
+/* Dark mode compatibility */
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb,
+[data-md-color-scheme="slate"] :hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
