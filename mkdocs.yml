@@ -4,7 +4,6 @@ site_url: https://jaojbls.github.io/ai-landscape/
 
 theme:
   name: material
-  # Set the default theme to light, with a toggle for dark
   palette:
     - scheme: default
       primary: black
@@ -20,10 +19,10 @@ theme:
         name: Switch to light mode
   
   features:
-    # Removed navigation.tabs to push everything to the left sidebar
     - navigation.sections
     - search.suggest
     - search.highlight
+    - toc.integrate # This moves the Table of Contents from the right to the left sidebar
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -34,15 +33,15 @@ markdown_extensions:
 
 nav:
   - Overview: index.md
-  - Foundations:
-      - L1 Foundation: L1-foundation.md
-      - L2 Alignment: L2-alignment.md
-      - L3 Adaptability: L3-adaptability.md
-  - Components:
-      - Model Architectures: 01-model-architectures.md
-      - Training & Adaptation: 02-training-adaptation.md
-      - Hardware: 03-hardware.md
-      - Model Formats: 04-model-formats.md
-      - Inference Engines: 05-inference-engines.md
-      - Tools: 06-tools.md
-      - LLM Extensions: 07-llm-extensions.md
+  - Layers:
+      - L1 Model Architectures: 01-model-architectures.md
+      - L2 Training & Adaptation: 02-training-adaptation.md
+      - L3 Hardware: 03-hardware.md
+      - L4 Model Formats: 04-model-formats.md
+      - L5 Inference Engines: 05-inference-engines.md
+      - L6 Tools: 06-tools.md
+      - L7 LLM Extensions: 07-llm-extensions.md
+  - Tiers:
+      - T1 Foundation: L1-foundation.md
+      - T2 Alignment: L2-alignment.md
+      - T3 Adaptability: L3-adaptability.md
