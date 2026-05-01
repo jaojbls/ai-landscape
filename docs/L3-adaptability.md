@@ -1,4 +1,4 @@
-# Adaptability — The Dynamic Layer
+# T3 Adaptability
 
 > **Living Stack — Tier 3** | The part that changes **daily**
 >

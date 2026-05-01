@@ -1,4 +1,4 @@
-# AI Tools & Environments
+# L6 Tools
 
 > **Deep-dive document** — For the high-level overview, see [00-overview.md](./00-overview.md)
 

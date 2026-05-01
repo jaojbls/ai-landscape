@@ -1,4 +1,4 @@
-# Foundation — The Base You Build On
+# T1 Foundation
 
 > **Living Stack — Tier 1** | The part that changes **yearly**
 >
