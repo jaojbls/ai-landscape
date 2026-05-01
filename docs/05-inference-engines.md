@@ -1,8 +1,6 @@
 # Inference Engines
 
 
----
-
 ## 1. What Is an Inference Engine?
 
 An inference engine is the **software that loads a model and runs it** — feeding in prompts, computing token predictions, and returning responses. It's the layer between the model file on disk and the user-facing tool you interact with.

@@ -1,8 +1,6 @@
 # AI Tools & Environments
 
 
----
-
 ## 1. The Tool Landscape
 
 AI tools in 2026 span a wide range — from backend model servers to fully autonomous coding agents. Most tools are now **hybrid**: they can run models locally AND connect to cloud providers.

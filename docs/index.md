@@ -1,9 +1,5 @@
 # 🧱 AI Building Blocks — Overview
 
-> **Main entry point.** Start here for the big picture, then follow links to the deep-dives.
-
----
-
 ## The AI Stack: 7 Layers
 
 ```

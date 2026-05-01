@@ -1,8 +1,6 @@
 # Model Architectures & Inference Parameters
 
 
----
-
 ## 1. How AI Models Are Classified
 
 AI models are classified along **two dimensions**: the neural network **architecture** (what's inside) and the **generative paradigm** (how it produces output).

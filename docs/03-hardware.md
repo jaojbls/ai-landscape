@@ -1,8 +1,6 @@
 # Processing Hardware
 
 
----
-
 ## 1. Why Hardware Matters
 
 AI workloads are fundamentally different from traditional computing. They're dominated by **matrix multiplication** — billions of multiply-and-accumulate operations — which is why specialised processors exist.

@@ -1,8 +1,6 @@
 # Model Formats & Quantisation
 
 
----
-
 ## 1. What Is a Model Format?
 
 A trained AI model is a massive collection of numbers (weights). A **model format** defines how those weights — and optionally the architecture, tokeniser, and metadata — are serialised to disk.
