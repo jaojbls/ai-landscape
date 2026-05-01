@@ -58,9 +58,9 @@ function processContent(text) {
     }
 
     if (!inCodeBlock) {
-      // 1. Shift headers by +2 levels
+      // 1. Shift headers by +1 level
       if (line.match(/^#+\s/)) {
-        line = '##' + line;
+        line = '#' + line;
       }
 
       // 2. Remove "Deep-dive" blockquotes completely
@@ -96,7 +96,7 @@ function processContent(text) {
   return processedLines.join('\n').replace(/For the high-level overview, see \[.*?\]\(.*?\)/g, '');
 }
 
-indexContent += '\n\n## AI Stack Layers\n\n';
+indexContent += '\n\n# 🥞 AI Stack Layers\n\n';
 for (const file of layers) {
   const filePath = path.join(docsDir, file);
   if (fs.existsSync(filePath)) {
@@ -107,7 +107,7 @@ for (const file of layers) {
   }
 }
 
-indexContent += '\n\n## Living Stack Tiers\n\n';
+indexContent += '\n\n# 🌱 Living Stack Tiers\n\n';
 for (const file of tiers) {
   const filePath = path.join(docsDir, file);
   if (fs.existsSync(filePath)) {

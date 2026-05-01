@@ -1,7 +1,7 @@
 /* Refined, Elegant Spacing for Single-Page Layout */
 
-/* Chapter Breaks (H2: AI Stack Layers, Living Stack Tiers) */
-.md-typeset h2 {
+/* Chapter Breaks (H1: 🥞 AI Stack Layers, 🌱 Living Stack Tiers) */
+.md-typeset h1:not(:first-child) {
   margin-top: 4rem !important;
   margin-bottom: 1.5rem !important;
   padding-bottom: 0.5rem;
@@ -11,8 +11,8 @@
   color: var(--md-default-fg-color);
 }
 
-/* Sub-Chapters (H3: L1 Model Architectures, T1 Foundation) */
-.md-typeset h3 {
+/* Sub-Chapters (H2: L1 Model Architectures, T1 Foundation) */
+.md-typeset h2 {
   margin-top: 3rem !important;
   margin-bottom: 1rem !important;
   font-weight: 600;
@@ -20,8 +20,8 @@
   border-bottom: none;
 }
 
-/* Sections (H4: 1. What Is an Inference Engine?) */
-.md-typeset h4 {
+/* Sections (H3: 1. What Is an Inference Engine?) */
+.md-typeset h3 {
   margin-top: 2rem !important;
   margin-bottom: 0.75rem !important;
   font-weight: 600;
@@ -29,13 +29,13 @@
 
 /* ADJACENT SIBLING RULES to prevent massive gaps */
 
-/* If a Layer (H3) directly follows a Category (H2), don't double the spacing */
-.md-typeset h2 + h3 {
+/* If a Layer (H2) directly follows a Category (H1), don't double the spacing */
+.md-typeset h1 + h2 {
   margin-top: 1rem !important;
 }
 
-/* If a Section (H4) directly follows a Layer (H3), squash the spacing so they group together nicely */
-.md-typeset h3 + h4 {
+/* If a Section (H3) directly follows a Layer (H2), squash the spacing so they group together nicely */
+.md-typeset h2 + h3 {
   margin-top: 0.5rem !important;
 }
 
