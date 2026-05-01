@@ -22,7 +22,7 @@ theme:
     - navigation.sections
     - search.suggest
     - search.highlight
-    - toc.integrate # This moves the Table of Contents from the right to the left sidebar
+    - toc.integrate
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -31,17 +31,5 @@ markdown_extensions:
   - admonition
   - pymdownx.details
 
-nav:
-  - Overview: index.md
-  - Layers:
-      - L1 Model Architectures: 01-model-architectures.md
-      - L2 Training & Adaptation: 02-training-adaptation.md
-      - L3 Hardware: 03-hardware.md
-      - L4 Model Formats: 04-model-formats.md
-      - L5 Inference Engines: 05-inference-engines.md
-      - L6 Tools: 06-tools.md
-      - L7 LLM Extensions: 07-llm-extensions.md
-  - Tiers:
-      - T1 Foundation: L1-foundation.md
-      - T2 Alignment: L2-alignment.md
-      - T3 Adaptability: L3-adaptability.md
+# No nav block is needed! MkDocs will automatically use index.md 
+# and the Table of Contents will populate the left sidebar perfectly.
