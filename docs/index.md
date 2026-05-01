@@ -1,4 +1,4 @@
-# 🧱 Building Blocks of AI v2 — Overview
+# 🧱 AI Building Blocks — Overview
 
 > **Main entry point.** Start here for the big picture, then follow links to the deep-dives.
 
@@ -6,7 +6,7 @@
 
 ## The AI Stack: 7 Layers
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 1: MODEL ARCHITECTURES (The Brains)                     │
 │  → Deep-dive: 01-model-architectures.md                        │
@@ -43,84 +43,96 @@
 │                                                                 │
 │  2C. Fine-Tuning                                                │
 │      • SFT (Supervised Fine-Tuning) — teaches format/style      │
-│      • Preference Optimisation — DPO, RLHF (PPO), GRPO         │
-│      • LoRA / QLoRA — lightweight, consumer GPU accessible      │
+│      • LoRA / QLoRA — parameter-efficient fine-tuning           │
+│      • Post-training Quantization (PTQ)                         │
 │                                                                 │
-│  2D. Distillation                                               │
-│      → Large teacher model → small student model (80-90% qual)  │
+│  2D. Alignment & RL                                             │
+│      • RLHF (Human Feedback), RLAIF (AI Feedback)               │
+│      • DPO (Direct Preference Optimization)                     │
+│      • GRPO (Group Relative Policy Optimization) — reasoning    │
+│      • KTO (Kahneman-Tversky Optimization)                      │
 │                                                                 │
-│  2E. Inference-Time Scaling                                     │
-│      → Chain-of-thought, thinking tokens, test-time compute     │
+│  2E. Distillation & Inference-Time Scaling                      │
+│      • Knowledge Distillation — teacher to student              │
+│      • Inference-Time Scaling — generating longer chains of     │
+│        thought (e.g. DeepSeek R1, OpenAI o1/o3)                 │
 └─────────────────────────────────────────────────────────────────┘
                                │
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  LAYER 3: HARDWARE & COMPUTE (The Body)                        │
+│  LAYER 3: HARDWARE (The Muscle)                                │
 │  → Deep-dive: 03-hardware.md                                   │
 │                                                                 │
-│  • CPU (Intel, AMD, ARM) — GGUF inference, no GPU needed        │
-│  • GPU (NVIDIA, AMD) — training + batch inference               │
-│  • TPU (Google) — cloud ML at scale                             │
-│  • LPU (Groq) — ultra-low latency inference                     │
-│  • NPU (Qualcomm, Intel, Apple) — edge/mobile/on-device         │
-│  • Apple Silicon (UMA) — unified memory for local inference     │
-│  • ASIC (AWS Inferentia/Trainium, Cerebras) — cloud scale       │
-│  • Analog AI (Mythic) — ultra-low power edge                    │
+│  3A. Cloud & Enterprise Data Center                             │
+│      • GPUs: NVIDIA H100, B200, AMD MI300X                      │
+│      • TPUs: Google TPU v5e/v6e (matrix multiplication)         │
+│      • LPUs: Groq (deterministic, SRAM-based, ultra-fast)       │
+│                                                                 │
+│  3B. Edge & Local Computing                                     │
+│      • CPUs: AVX-512, AMX instructions                          │
+│      • Apple Silicon: Unified Memory architecture (M1–M4)       │
+│      • NPUs: Snapdragon, Intel Core Ultra (local AI PCs)        │
+│                                                                 │
+│  3C. Analog AI / Neuromorphic (Emerging)                        │
 └─────────────────────────────────────────────────────────────────┘
                                │
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  LAYER 4: MODEL FORMATS & QUANTISATION (The Compression)       │
+│  LAYER 4: MODEL FORMATS (The Package)                          │
 │  → Deep-dive: 04-model-formats.md                              │
 │                                                                 │
-│  Weight Formats:     SafeTensors, GGUF                          │
-│  Interchange:        ONNX (cross-platform portability)          │
-│  Vendor-Optimised:   TensorRT (NVIDIA), CoreML (Apple),         │
-│                      MLX (Apple), OpenVINO (Intel),              │
-│                      TFLite (Google), QNN (Qualcomm)             │
+│  4A. Weight Storage                                             │
+│      • Safetensors (standard, zero-copy, secure)                │
+│      • PyTorch / Pickle (legacy, insecure)                      │
 │                                                                 │
-│  Quantisation: FP16 → INT8 → INT4 → INT3                       │
-│  Methods: GPTQ, AWQ, EXL2, BitsAndBytes, GGUF K-quants         │
-│  Default: Q4_K_M — ~75% size reduction, minor quality loss      │
+│  4B. Optimization & Quantization                                │
+│      • AWQ, GPTQ, EXL2 (GPU-optimized)                          │
+│      • GGUF (llama.cpp standard, flexible CPU/GPU)              │
+│      • ONNX (cross-platform inference)                          │
 └─────────────────────────────────────────────────────────────────┘
                                │
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  LAYER 5: INFERENCE ENGINES (The Runtime)                      │
+│  LAYER 5: INFERENCE ENGINES (The Motor)                        │
 │  → Deep-dive: 05-inference-engines.md                          │
 │                                                                 │
-│  Local:   llama.cpp, MLX, ExLlamaV2, bitnet.cpp (1.58-bit)     │
-│  Server:  vLLM, SGLang, TGI, TensorRT-LLM, Triton              │
-│  Edge:    CoreML Runtime, ONNX Runtime, TFLite Runtime          │
+│  5A. High-Throughput / Data Center                              │
+│      • vLLM (PagedAttention, multi-LoRA)                        │
+│      • SGLang (RadixAttention, ultra-fast generation)           │
+│      • TensorRT-LLM (NVIDIA optimized)                          │
+│      • TGI (Hugging Face Text Generation Inference)             │
 │                                                                 │
-│  Key insight: Ollama is the wrapper, llama.cpp is the engine    │
+│  5B. Local / Edge Computing                                     │
+│      • llama.cpp (GGUF, Mac/CPU/GPU)                            │
+│      • MLX (Apple Silicon optimized)                            │
+│      • ONNX Runtime, WebNN (Browser)                            │
 └─────────────────────────────────────────────────────────────────┘
                                │
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  LAYER 6: TOOLS & ENVIRONMENTS (The Interface)                 │
+│  LAYER 6: TOOLS & ENVIRONMENTS (The Interfaces)                │
 │  → Deep-dive: 06-tools.md                                      │
 │                                                                 │
-│  6A. Model Servers (backend, no UI)                              │
-│      • Ollama, LocalAI, Foundry Local, Lemonade                 │
+│  6A. Model Servers                                              │
+│      • Ollama, LM Studio, vLLM server                           │
 │                                                                 │
-│  6B. Desktop Apps (runner + chat UI, local + cloud)             │
-│      • LM Studio, Jan, GPT4All                                  │
+│  6B. Desktop / Chat UIs                                         │
+│      • Open WebUI, AnythingLLM, LM Studio                       │
 │                                                                 │
-│  6C. Web UIs (frontend, needs backend)                          │
-│      • Open WebUI, AnythingLLM (35+ providers)                  │
+│  6C. Cloud Platforms                                            │
+│      • Hugging Face (Spaces, Hub), Replicate, Together AI       │
 │                                                                 │
-│  6D. Cloud Assistants                                            │
-│      • ChatGPT, Claude.ai, Gemini, Kimi, Perplexity             │
+│  6D. Provider Assistants                                        │
+│      • ChatGPT, Claude.ai, Gemini Advanced, DeepSeek            │
 │                                                                 │
-│  6E. Cloud Inference (run OSS models on rented hardware)        │
-│      • Groq, Together AI, Fireworks, Bedrock, SambaNova          │
+│  6E. IDEs & Editors                                             │
+│      • Cursor, Windsurf, GitHub Copilot, Cline/RooCode          │
 │                                                                 │
-│  6F. AI IDEs                                                     │
-│      • Cursor, Windsurf, Antigravity, Copilot, Zed, Continue    │
+│  6F. RAG & Workflow UIs                                         │
+│      • Dify, Flowise, Langflow                                  │
 │                                                                 │
-│  6G. CLI Coding Agents                                           │
-│      • Claude Code, Gemini CLI, Codex, Aider, Cline             │
+│  6G. CLI / Terminal Agents                                      │
+│      • Aider, Fabric                                            │
 │                                                                 │
 │  6H. Autonomous / No-Code                                        │
 │      • Devin AI, Replit Agent, Lovable, Bolt.new, v0             │
@@ -154,7 +166,7 @@
 
 ## The Full Path: End-to-End Example
 
-```
+```text
 1. Model:      Llama 3.1 70B (Transformer LLM, autoregressive, MoE)
 2. Training:   Pre-trained by Meta → SFT + DPO → Instruct variant
 3. Hardware:   Mac Studio M4 Ultra, 192 GB unified memory
@@ -172,7 +184,7 @@ The 7-layer stack above is a **technology catalog** — "what are the building b
 
 These are two views of the same system:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │  THE LIVING STACK                                               │
 │                                                                 │
@@ -225,32 +237,3 @@ These are two views of the same system:
 | Alignment | L2 (SFT, DPO, LoRA, Distillation) | "How do I customize its behaviour?" |
 | Adaptability | L7 (RAG, Agents, MCP, Memory) | "How do I extend it at runtime?" |
 | — | L3–L6 (Hardware, Formats, Engines, Tools) | Infrastructure that enables all tiers |
-
----
-
-## Document Index
-
-
-## AI Stack Layers
-
-{% include "01-model-architectures.md" heading-offset=2 %}
-
-{% include "02-training-adaptation.md" heading-offset=2 %}
-
-{% include "03-hardware.md" heading-offset=2 %}
-
-{% include "04-model-formats.md" heading-offset=2 %}
-
-{% include "05-inference-engines.md" heading-offset=2 %}
-
-{% include "06-tools.md" heading-offset=2 %}
-
-{% include "07-llm-extensions.md" heading-offset=2 %}
-
-## Living Stack Tiers
-
-{% include "L1-foundation.md" heading-offset=2 %}
-
-{% include "L2-alignment.md" heading-offset=2 %}
-
-{% include "L3-adaptability.md" heading-offset=2 %}

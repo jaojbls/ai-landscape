@@ -36,7 +36,3 @@ markdown_extensions:
 
 plugins:
   - search
-  - include-markdown
-
-nav:
-  - 'AI Landscape': index.md
