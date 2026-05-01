@@ -1,1 +1,46 @@
-/* Empty for now to remove the bad layout */
+/* Refined, Elegant Spacing for Single-Page Layout */
+
+/* Chapter Breaks (H2: AI Stack Layers, Living Stack Tiers) */
+.md-typeset h2 {
+  margin-top: 4rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--md-default-fg-color);
+}
+
+/* Sub-Chapters (H3: L1 Model Architectures, T1 Foundation) */
+.md-typeset h3 {
+  margin-top: 3rem !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600;
+  color: var(--md-primary-color);
+  border-bottom: none;
+}
+
+/* Sections (H4: 1. What Is an Inference Engine?) */
+.md-typeset h4 {
+  margin-top: 2rem !important;
+  margin-bottom: 0.75rem !important;
+  font-weight: 600;
+}
+
+/* ADJACENT SIBLING RULES to prevent massive gaps */
+
+/* If a Layer (H3) directly follows a Category (H2), don't double the spacing */
+.md-typeset h2 + h3 {
+  margin-top: 1rem !important;
+}
+
+/* If a Section (H4) directly follows a Layer (H3), squash the spacing so they group together nicely */
+.md-typeset h3 + h4 {
+  margin-top: 0.5rem !important;
+}
+
+/* Keep the blockquotes clean */
+.md-typeset blockquote {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}

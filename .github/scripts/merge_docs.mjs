@@ -102,7 +102,7 @@ for (const file of layers) {
   if (fs.existsSync(filePath)) {
     let content = fs.readFileSync(filePath, 'utf-8');
     content = processContent(content);
-    indexContent += content + '\n\n---\n\n';
+    indexContent += content + '\n\n';
     fs.unlinkSync(filePath);
   }
 }
@@ -113,7 +113,7 @@ for (const file of tiers) {
   if (fs.existsSync(filePath)) {
     let content = fs.readFileSync(filePath, 'utf-8');
     content = processContent(content);
-    indexContent += content + '\n\n---\n\n';
+    indexContent += content + '\n\n';
     fs.unlinkSync(filePath);
   }
 }
