@@ -1,6 +1,5 @@
 # Training & Adaptation
 
-> **Deep-dive document** — For the high-level overview, see [00-overview.md](./00-overview.md)
 >
 > **📌 Decision guidance:** For when/why to choose between techniques, see the Living Stack: [L2-alignment.md](./L2-alignment.md)
 

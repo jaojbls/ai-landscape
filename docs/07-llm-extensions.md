@@ -1,6 +1,5 @@
 # LLM Extensions & Capabilities
 
-> **Deep-dive document** — For the high-level overview, see [00-overview.md](./00-overview.md)
 >
 > **📌 Decision guidance:** For RAG vs fine-tuning decisions, see the Living Stack: [L3-adaptability.md](./L3-adaptability.md)
 
