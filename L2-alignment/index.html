@@ -1,0 +1,1888 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for AI architectures, tools, and foundations.">
+      
+      
+      
+        <link rel="canonical" href="https://jaojbls.github.io/ai-landscape/L2-alignment/">
+      
+      
+        <link rel="prev" href="../L1-foundation/">
+      
+      
+        <link rel="next" href="../L3-adaptability/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>T2 Alignment - AI Landscape</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#alignment-making-the-model-yours" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Landscape" class="md-header__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Landscape
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T2 Alignment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Landscape" class="md-nav__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Landscape
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🥞 AI Stack Layers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🥞 AI Stack Layers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-model-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L1 Model Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-training-adaptation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 Training & Adaptation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3 Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-model-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L4 Model Formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-inference-engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5 Inference Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6 Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-llm-extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L7 LLM Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌱 Living Stack Tiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🌱 Living Stack Tiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L1-foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 Foundation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 Alignment
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What Is Alignment?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-alignment-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Alignment Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sft-supervised-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. SFT — Supervised Fine-Tuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. SFT — Supervised Fine-Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dataset Formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-quantity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality &gt; Quantity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tooling-for-sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tooling for SFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-reinforcement-learning-preference-optimisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Reinforcement Learning &amp; Preference Optimisation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Reinforcement Learning &amp; Preference Optimisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rlhf-reinforcement-learning-from-human-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RLHF — Reinforcement Learning from Human Feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpo-direct-preference-optimisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO — Direct Preference Optimisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpo-group-relative-policy-optimisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRPO — Group Relative Policy Optimisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kto-kahneman-tversky-optimisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KTO — Kahneman-Tversky Optimisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constitutional-ai-cai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constitutional AI (CAI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preference-method-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preference Method Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Which
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-lora-qlora-democratised-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. LoRA &amp; QLoRA — Democratised Fine-Tuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. LoRA &amp; QLoRA — Democratised Fine-Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-lora-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How LoRA Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lora-hyperparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoRA Hyperparameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qlora-going-further" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QLoRA — Going Further
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-lora-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical LoRA Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapter-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapter Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Merging Adapters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-distillation-compressing-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Distillation — Compressing Intelligence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Distillation — Compressing Intelligence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-labels-vs-hard-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Soft Labels vs Hard Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-world-distillation-deepseek-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-World Distillation: DeepSeek-R1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-distillation-beats-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Distillation Beats Fine-Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inference-time-scaling-smarter-not-bigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Inference-Time Scaling — Smarter, Not Bigger
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Inference-Time Scaling — Smarter, Not Bigger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chain-of-thought-cot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chain-of-Thought (CoT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thinking-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thinking Tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-time-compute-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test-Time Compute Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-alignment-decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. The Alignment Decision Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. The Alignment Decision Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-should-i-align" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "When Should I Align?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#costbenefit-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost/Benefit Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L3-adaptability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 Adaptability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="alignment-making-the-model-yours">Alignment — Making the Model Yours<a class="headerlink" href="#alignment-making-the-model-yours" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Living Stack — Tier 2</strong> | The part that changes <strong>weekly/monthly</strong></p>
+<p>For the technology reference, see <a href="../02-training-adaptation/">02-training-adaptation.md</a></p>
+</blockquote>
+<hr />
+<h2 id="1-what-is-alignment">1. What Is Alignment?<a class="headerlink" href="#1-what-is-alignment" title="Permanent link">&para;</a></h2>
+<p>A pre-trained base model can predict the next token, but it can't:
+- ❌ Follow instructions ("summarise this in 3 bullet points")
+- ❌ Refuse harmful requests ("tell me how to…")
+- ❌ Match a particular style or domain
+- ❌ Reason step-by-step about complex problems</p>
+<p><strong>Alignment</strong> transforms a raw base model into a useful, safe, specialised assistant. It's the bridge between "raw language prediction" and "helpful AI tool."</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Base Model (predicts text)  →  Alignment  →  Instruct Model (follows instructions)
+</code></pre></div>
+<hr />
+<h2 id="2-the-alignment-pipeline">2. The Alignment Pipeline<a class="headerlink" href="#2-the-alignment-pipeline" title="Permanent link">&para;</a></h2>
+<p>Most production models follow this sequence:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────────────┐   ┌──────────┐
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│   Base    │──▶│   CPT    │──▶│   SFT    │──▶│   Preference     │──▶│  Deploy  │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│  Model    │   │(optional)│   │          │   │ (DPO/RLHF/GRPO)  │   │          │
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>└──────────┘   └──────────┘   └──────────┘   └──────────────────┘   └──────────┘
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  (from L1)     domain data    format/style    human preferences     (to L3)
+</code></pre></div>
+<p>Each stage builds on the previous:
+1. <strong>CPT</strong> (optional) — teaches domain knowledge (see <a href="../L1-foundation/">L1-foundation.md</a>)
+2. <strong>SFT</strong> — teaches format, style, instruction-following
+3. <strong>Preference optimisation</strong> — teaches quality, safety, human preferences
+4. <strong>Deploy</strong> — quantise, serve, and add runtime extensions (see <a href="../L3-adaptability/">L3-adaptability.md</a>)</p>
+<hr />
+<h2 id="3-sft-supervised-fine-tuning">3. SFT — Supervised Fine-Tuning<a class="headerlink" href="#3-sft-supervised-fine-tuning" title="Permanent link">&para;</a></h2>
+<p>SFT is the first and most impactful alignment step. It teaches the model <strong>how to behave</strong> — how to follow instructions, format responses, and adopt a conversational style.</p>
+<h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<p>You provide thousands of (instruction, response) pairs. The model learns to produce outputs that match these examples.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Training pair:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  Instruction: &quot;Explain quantum computing to a 10-year-old&quot;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  Response:    &quot;Imagine a regular computer is like a light switch — it can
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>                be ON or OFF. A quantum computer is like a dimmer switch...&quot;
+</code></pre></div>
+<h3 id="dataset-formats">Dataset Formats<a class="headerlink" href="#dataset-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Format</th>
+<th style="text-align: left;">Structure</th>
+<th style="text-align: left;">Used By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Alpaca</strong></td>
+<td style="text-align: left;"><code>{"instruction": "...", "input": "...", "output": "..."}</code></td>
+<td style="text-align: left;">Stanford Alpaca, many OSS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ShareGPT</strong></td>
+<td style="text-align: left;">Multi-turn conversation: <code>[{"from": "human", "value": "..."}, {"from": "gpt", "value": "..."}]</code></td>
+<td style="text-align: left;">Vicuna, community models</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Chat Template</strong></td>
+<td style="text-align: left;">Role-based: <code>system</code>, <code>user</code>, <code>assistant</code> messages</td>
+<td style="text-align: left;">OpenAI, Llama, most modern</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tool-augmented</strong></td>
+<td style="text-align: left;">Conversations with function calls and tool results</td>
+<td style="text-align: left;">For tool-use training</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-quality-quantity">Data Quality &gt; Quantity<a class="headerlink" href="#data-quality-quantity" title="Permanent link">&para;</a></h3>
+<p>A critical insight that has emerged in 2026:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Approach</th>
+<th style="text-align: left;">Scale</th>
+<th style="text-align: left;">Quality</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">LIMA (Meta, 2023)</td>
+<td style="text-align: left;">1,000 examples</td>
+<td style="text-align: left;">Hand-curated by experts</td>
+<td style="text-align: left;">Competitive with 52K-example Alpaca</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alpaca</td>
+<td style="text-align: left;">52,000 examples</td>
+<td style="text-align: left;">GPT-3.5 generated</td>
+<td style="text-align: left;">Good but noisy</td>
+</tr>
+<tr>
+<td style="text-align: left;">Industry practice</td>
+<td style="text-align: left;">10K–100K</td>
+<td style="text-align: left;">Human-reviewed, diverse</td>
+<td style="text-align: left;">Best results</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 1,000 excellent examples often beat 50,000 mediocre ones.</strong> Invest in data quality — it's the highest-ROI activity in fine-tuning.</p>
+</blockquote>
+<h3 id="tooling-for-sft">Tooling for SFT<a class="headerlink" href="#tooling-for-sft" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Unsloth</strong></td>
+<td style="text-align: left;">Consumer GPU fine-tuning</td>
+<td style="text-align: left;">2x faster, 60% less memory</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Axolotl</strong></td>
+<td style="text-align: left;">Flexible research fine-tuning</td>
+<td style="text-align: left;">YAML config, many dataset formats</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LLaMA-Factory</strong></td>
+<td style="text-align: left;">No-code fine-tuning</td>
+<td style="text-align: left;">Web UI, 100+ model support</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>HF Trainer</strong></td>
+<td style="text-align: left;">Custom training loops</td>
+<td style="text-align: left;">Maximum flexibility, Hugging Face ecosystem</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TRL (Transformer RL)</strong></td>
+<td style="text-align: left;">Preference + SFT combined</td>
+<td style="text-align: left;">Built for the full alignment pipeline</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-reinforcement-learning-preference-optimisation">4. Reinforcement Learning &amp; Preference Optimisation<a class="headerlink" href="#4-reinforcement-learning-preference-optimisation" title="Permanent link">&para;</a></h2>
+<p>After SFT, preference optimisation teaches the model <strong>which responses humans prefer</strong> — choosing between two correct answers based on helpfulness, safety, and style.</p>
+<h3 id="rlhf-reinforcement-learning-from-human-feedback">RLHF — Reinforcement Learning from Human Feedback<a class="headerlink" href="#rlhf-reinforcement-learning-from-human-feedback" title="Permanent link">&para;</a></h3>
+<p>The original alignment method, used by OpenAI for GPT-3.5/4 and Anthropic for Claude.</p>
+<p><strong>Three-stage process:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Stage 1: Collect human preferences
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   Model generates two responses to the same prompt
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>   Human annotator ranks: Response A &gt; Response B
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Stage 2: Train a reward model
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   A separate model learns to predict human preferences
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>   Input: (prompt, response) → Output: score (0–1)
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Stage 3: Optimise with PPO (Proximal Policy Optimisation)
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>   The LLM generates responses
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>   Reward model scores them
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>   PPO updates the LLM to produce higher-scoring responses
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>   KL divergence penalty prevents the model from drifting too far from the SFT baseline
+</code></pre></div>
+<p><strong>Why RLHF is hard:</strong>
+- Requires training a <strong>separate reward model</strong> (another full-sized model)
+- PPO is <strong>unstable</strong> — sensitive to hyperparameters, prone to reward hacking
+- <strong>Expensive</strong> — needs significant compute and human annotation
+- <strong>Complex engineering</strong> — multiple models training simultaneously</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Proven at scale (GPT-4, Claude)</td>
+<td style="text-align: left;">High complexity and cost</td>
+</tr>
+<tr>
+<td style="text-align: left;">Most flexible objective</td>
+<td style="text-align: left;">Reward hacking risk</td>
+</tr>
+<tr>
+<td style="text-align: left;">Well-studied theory</td>
+<td style="text-align: left;">Requires separate reward model</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="dpo-direct-preference-optimisation">DPO — Direct Preference Optimisation<a class="headerlink" href="#dpo-direct-preference-optimisation" title="Permanent link">&para;</a></h3>
+<p>DPO dramatically simplified preference optimisation by <strong>eliminating the reward model entirely</strong>.</p>
+<p><strong>How it works:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Input: (prompt, chosen_response, rejected_response) triplets
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Process: Directly optimise the LLM to increase probability of chosen
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>         and decrease probability of rejected responses
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Output: Aligned model (no separate reward model needed)
+</code></pre></div>
+<p><strong>The mathematical insight:</strong> DPO proves that the optimal policy under RLHF's objective can be obtained by a simple classification loss on preference pairs, without ever training a reward model.</p>
+<p><strong>Practical advantages:</strong>
+- <strong>Much simpler</strong> — single training loop instead of three
+- <strong>More stable</strong> — no PPO hyperparameter sensitivity
+- <strong>Cheaper</strong> — no reward model to train or serve
+- <strong>Same quality</strong> — matches or beats RLHF in most benchmarks</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Simple — one training loop</td>
+<td style="text-align: left;">Needs paired (chosen, rejected) data</td>
+</tr>
+<tr>
+<td style="text-align: left;">Stable — no PPO instability</td>
+<td style="text-align: left;">Can overfit to preference data</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cheap — no reward model</td>
+<td style="text-align: left;">Less flexible than RLHF for complex objectives</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 DPO is now the default for open-source alignment.</strong> Most community models use DPO because it's simpler, cheaper, and produces comparable results to RLHF.</p>
+</blockquote>
+<hr />
+<h3 id="grpo-group-relative-policy-optimisation">GRPO — Group Relative Policy Optimisation<a class="headerlink" href="#grpo-group-relative-policy-optimisation" title="Permanent link">&para;</a></h3>
+<p>DeepSeek's innovation, used to train DeepSeek-R1 — the model that matched GPT-4 reasoning capabilities.</p>
+<p><strong>How it works:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>1. For each prompt, generate a GROUP of N responses (e.g., 64)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>2. Score each response with verifiable rewards:
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>   - Math: is the answer correct? (0 or 1)
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>   - Code: does it pass the test cases? (0 or 1)
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>   - Format: does it follow the required structure?
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>3. Rank responses within the group (relative scoring)
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>4. Optimise: increase probability of high-ranked responses,
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>   decrease probability of low-ranked responses
+</code></pre></div>
+<p><strong>Key insight — verifiable rewards:</strong> GRPO uses objective scoring (correct/incorrect) instead of human preference, which is possible for math and code because answers can be verified programmatically.</p>
+<p><strong>Why it matters:</strong>
+- <strong>No human annotation</strong> — verifiable rewards are automated
+- <strong>No reward model</strong> — scoring is programmatic
+- <strong>Scales beautifully</strong> — generate more samples, get better alignment
+- <strong>Breakthrough for reasoning</strong> — DeepSeek-R1-Zero emerged chain-of-thought reasoning through GRPO alone, without any SFT</p>
+<hr />
+<h3 id="kto-kahneman-tversky-optimisation">KTO — Kahneman-Tversky Optimisation<a class="headerlink" href="#kto-kahneman-tversky-optimisation" title="Permanent link">&para;</a></h3>
+<p>A newer method that only needs <strong>individual labels</strong> (good or bad) — no paired comparisons needed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>DPO needs:   (prompt, chosen_response, rejected_response) — paired data
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>KTO needs:   (prompt, response, label: good/bad) — unpaired data
+</code></pre></div>
+<p><strong>Why it matters:</strong> Paired preference data is expensive to collect. KTO works with simpler data — just "was this response good or bad?" — making it more practical for many scenarios.</p>
+<hr />
+<h3 id="constitutional-ai-cai">Constitutional AI (CAI)<a class="headerlink" href="#constitutional-ai-cai" title="Permanent link">&para;</a></h3>
+<p>Anthropic's approach to alignment. Instead of human-labelled preferences, the model <strong>critiques and revises its own responses</strong> based on a set of principles (a "constitution").</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>1. Model generates initial response
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>2. Model evaluates: &quot;Does this response violate any of these principles?&quot;
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>   - Be helpful, harmless, and honest
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>   - Don&#39;t assist with illegal activities
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>   - Acknowledge uncertainty
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>3. Model revises its response to align with principles
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>4. The revised responses become training data
+</code></pre></div>
+<p><strong>Key innovation:</strong> Scales alignment without proportionally scaling human annotation.</p>
+<hr />
+<h3 id="preference-method-comparison">Preference Method Comparison<a class="headerlink" href="#preference-method-comparison" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Needs Reward Model?</th>
+<th style="text-align: left;">Data Requirement</th>
+<th style="text-align: left;">Complexity</th>
+<th style="text-align: left;">Used By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RLHF (PPO)</strong></td>
+<td style="text-align: left;">✅ Yes</td>
+<td style="text-align: left;">Human preference pairs</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">OpenAI (GPT-4), Anthropic (Claude)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DPO</strong></td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">Chosen/rejected pairs</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Most open-source models</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GRPO</strong></td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">Verifiable rewards</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">DeepSeek (R1)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>KTO</strong></td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">Good/bad labels (unpaired)</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Research, emerging</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Constitutional AI</strong></td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">Principles + self-critique</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Anthropic (Claude)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-to-use-which">When to Use Which<a class="headerlink" href="#when-to-use-which" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Do you have paired preference data?
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>├── Yes, high quality → DPO (simplest, proven)
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>├── Yes, but noisy → RLHF (reward model filters noise)
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>├── No paired data, but have good/bad labels?
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│   └── KTO (works with unpaired data)
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>│
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>├── Task has verifiable answers (math, code)?
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>│   └── GRPO (automated, scalable)
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>│
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>└── Want to scale alignment without human annotation?
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    └── Constitutional AI (self-supervised)
+</code></pre></div>
+<hr />
+<h2 id="5-lora-qlora-democratised-fine-tuning">5. LoRA &amp; QLoRA — Democratised Fine-Tuning<a class="headerlink" href="#5-lora-qlora-democratised-fine-tuning" title="Permanent link">&para;</a></h2>
+<p>Full fine-tuning updates all model parameters — requiring massive GPU resources. LoRA makes alignment accessible to anyone with a consumer GPU.</p>
+<h3 id="how-lora-works">How LoRA Works<a class="headerlink" href="#how-lora-works" title="Permanent link">&para;</a></h3>
+<p>Instead of updating the model's full weight matrices, LoRA injects <strong>small trainable adapter matrices</strong> that capture the desired changes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Original weight matrix W (frozen):     [4096 × 4096] = 16M parameters
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>LoRA adapter A × B (trainable):        [4096 × 16] × [16 × 4096] = 131K parameters
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>That&#39;s 0.8% of the original parameters — 99.2% reduction in trainable params.
+</code></pre></div>
+<p><strong>The mathematical insight:</strong> Fine-tuning typically produces low-rank weight changes. LoRA exploits this by decomposing the update into two small matrices (rank <code>r</code>, typically 8–64).</p>
+<h3 id="lora-hyperparameters">LoRA Hyperparameters<a class="headerlink" href="#lora-hyperparameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">What It Controls</th>
+<th style="text-align: left;">Typical Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Rank (r)</strong></td>
+<td style="text-align: left;">Adapter capacity — higher = more expressive</td>
+<td style="text-align: left;">8–64 (start with 16)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Alpha (α)</strong></td>
+<td style="text-align: left;">Scaling factor for adapter contribution</td>
+<td style="text-align: left;">Usually 2× rank</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Target modules</strong></td>
+<td style="text-align: left;">Which layers get adapters</td>
+<td style="text-align: left;"><code>q_proj, v_proj</code> (attention layers)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dropout</strong></td>
+<td style="text-align: left;">Regularisation to prevent overfitting</td>
+<td style="text-align: left;">0.05–0.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="qlora-going-further">QLoRA — Going Further<a class="headerlink" href="#qlora-going-further" title="Permanent link">&para;</a></h3>
+<p>QLoRA combines two techniques to fine-tune massive models on consumer hardware:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>1. Quantise the base model to 4-bit (NF4 — a quantisation format optimised for
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>   normally-distributed weights)
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>2. Apply LoRA adapters on top (trained in BFloat16)
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>3. Use paged optimisers (offload optimizer states to CPU when GPU is full)
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Result: Fine-tune a 70B model on a single RTX 4090 (24 GB VRAM)
+</code></pre></div>
+<h3 id="practical-lora-workflow">Practical LoRA Workflow<a class="headerlink" href="#practical-lora-workflow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Using Unsloth (2x faster, 60% less memory)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>pip<span class="w"> </span>install<span class="w"> </span>unsloth
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Train a LoRA adapter</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>python<span class="w"> </span>train.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span>--model<span class="w"> </span>meta-llama/Llama-3.1-8B<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span>--dataset<span class="w"> </span>your_data.jsonl<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span>--lora_rank<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span>--num_epochs<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span>--output_dir<span class="w"> </span>./my-adapter
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="c1"># Result: ~50 MB adapter file (vs 16 GB base model)</span>
+</code></pre></div>
+<h3 id="adapter-management">Adapter Management<a class="headerlink" href="#adapter-management" title="Permanent link">&para;</a></h3>
+<p>One of LoRA's killer features — <strong>swap adapters</strong> on the same base model:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Base: Llama 3.1 70B (140 GB)
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  ├── legal-adapter.safetensors (50 MB) → Legal document analysis
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  ├── medical-adapter.safetensors (50 MB) → Medical Q&amp;A
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  ├── code-adapter.safetensors (50 MB) → Code generation
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>  └── brand-voice-adapter.safetensors (50 MB) → Your company&#39;s writing style
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>Swap at runtime — no need to load different 140 GB models!
+</code></pre></div>
+<h3 id="merging-adapters">Merging Adapters<a class="headerlink" href="#merging-adapters" title="Permanent link">&para;</a></h3>
+<p>For deployment, merge the adapter back into the base model:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Base Model + LoRA Adapter → Merged Model (full-size, no adapter overhead at inference)
+</code></pre></div>
+<p>Merging removes the runtime overhead of applying adapters but loses the ability to swap.</p>
+<blockquote>
+<p><strong>💡 LoRA is to AI what Docker was to deployment — it democratised something previously accessible only to large organisations.</strong></p>
+</blockquote>
+<hr />
+<h2 id="6-distillation-compressing-intelligence">6. Distillation — Compressing Intelligence<a class="headerlink" href="#6-distillation-compressing-intelligence" title="Permanent link">&para;</a></h2>
+<p>Distillation transfers knowledge from a <strong>large "teacher" model</strong> to a <strong>smaller "student" model</strong>, preserving 80–90% of the quality at a fraction of the cost.</p>
+<h3 id="how-it-works_1">How It Works<a class="headerlink" href="#how-it-works_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Teacher (405B, expensive, slow)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    │
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    │  Generate responses to thousands of prompts
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    │  Student learns to mimic teacher&#39;s outputs
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    │  (including soft probabilities, not just hard labels)
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    ▼
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>Student (8B, cheap, fast)
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    → 80-90% of teacher quality
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    → 50x cheaper to run
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    → 10x faster inference
+</code></pre></div>
+<h3 id="soft-labels-vs-hard-labels">Soft Labels vs Hard Labels<a class="headerlink" href="#soft-labels-vs-hard-labels" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">What the Student Learns</th>
+<th style="text-align: left;">Quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Hard labels</strong></td>
+<td style="text-align: left;">Just the final answer: "Paris"</td>
+<td style="text-align: left;">Lower — loses nuance</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Soft labels</strong></td>
+<td style="text-align: left;">Full probability distribution: "Paris 0.85, Lyon 0.05, Marseille 0.03..."</td>
+<td style="text-align: left;">Higher — captures teacher's uncertainty and reasoning</td>
+</tr>
+</tbody>
+</table>
+<p>The teacher's probability distribution contains rich information — which alternatives the teacher considered, how confident it was — that hard labels lose.</p>
+<h3 id="real-world-distillation-deepseek-r1">Real-World Distillation: DeepSeek-R1<a class="headerlink" href="#real-world-distillation-deepseek-r1" title="Permanent link">&para;</a></h3>
+<p>DeepSeek's distillation chain is the best 2026 example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>DeepSeek-R1-Zero (GRPO only, no SFT)
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    ↓ SFT + preference
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>DeepSeek-R1 (full model, 671B MoE)
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    ↓ distillation
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>DeepSeek-R1-Distill-Llama-70B  → near R1 quality, runs locally
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>DeepSeek-R1-Distill-Qwen-32B  → good quality, modest hardware
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>DeepSeek-R1-Distill-Llama-8B  → decent quality, runs on laptops
+</code></pre></div>
+<h3 id="when-distillation-beats-fine-tuning">When Distillation Beats Fine-Tuning<a class="headerlink" href="#when-distillation-beats-fine-tuning" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Scenario</th>
+<th style="text-align: left;">Distillation</th>
+<th style="text-align: left;">Fine-tuning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Have access to a powerful teacher model</td>
+<td style="text-align: left;">✅ Best choice</td>
+<td style="text-align: left;">⚠️ Limited by your training data</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need a small, fast production model</td>
+<td style="text-align: left;">✅ Shrink the teacher</td>
+<td style="text-align: left;">⚠️ Small model may not have enough capacity</td>
+</tr>
+<tr>
+<td style="text-align: left;">Want reasoning capabilities in a small model</td>
+<td style="text-align: left;">✅ Transfer reasoning patterns</td>
+<td style="text-align: left;">❌ Hard to teach reasoning from data alone</td>
+</tr>
+<tr>
+<td style="text-align: left;">Have domain-specific training data</td>
+<td style="text-align: left;">⚠️ Need a teacher with domain knowledge</td>
+<td style="text-align: left;">✅ Direct from your data</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-inference-time-scaling-smarter-not-bigger">7. Inference-Time Scaling — Smarter, Not Bigger<a class="headerlink" href="#7-inference-time-scaling-smarter-not-bigger" title="Permanent link">&para;</a></h2>
+<p>The 2026 frontier isn't just bigger models — it's giving models <strong>more time to think</strong> during inference.</p>
+<h3 id="chain-of-thought-cot">Chain-of-Thought (CoT)<a class="headerlink" href="#chain-of-thought-cot" title="Permanent link">&para;</a></h3>
+<p>Simply asking the model to "think step by step" dramatically improves reasoning:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Without CoT: &quot;What is 23 × 17?&quot; → &quot;391&quot; (often wrong)
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>With CoT:    &quot;What is 23 × 17? Think step by step.&quot;
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>             → &quot;23 × 17 = 23 × 10 + 23 × 7 = 230 + 161 = 391&quot; ✅
+</code></pre></div>
+<h3 id="thinking-tokens">Thinking Tokens<a class="headerlink" href="#thinking-tokens" title="Permanent link">&para;</a></h3>
+<p>Modern reasoning models generate <strong>internal reasoning</strong> that the user doesn't see:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Approach</th>
+<th style="text-align: left;">How It Works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>o1 / o3</strong> (OpenAI)</td>
+<td style="text-align: left;">Internal CoT</td>
+<td style="text-align: left;">Hidden thinking tokens before answering</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Claude Extended Thinking</strong> (Anthropic)</td>
+<td style="text-align: left;">Visible CoT</td>
+<td style="text-align: left;">Thinking shown in a collapsible block</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DeepSeek-R1</strong></td>
+<td style="text-align: left;">Long CoT</td>
+<td style="text-align: left;">Extended reasoning chains (can be very long)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-time-compute-scaling">Test-Time Compute Scaling<a class="headerlink" href="#test-time-compute-scaling" title="Permanent link">&para;</a></h3>
+<p>A paradigm shift: instead of making models bigger (training-time scaling), spend more compute at inference:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Training-Time Scaling:   Bigger model = better answers (expensive to train)
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>Test-Time Scaling:       More thinking = better answers (expensive per query, but flexible)
+</code></pre></div>
+<p><strong>The tradeoff:</strong> A smaller model with more inference compute can match a larger model:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Llama 3.1 8B + extended thinking ≈ Llama 3.1 70B + standard inference
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>(much cheaper to deploy)          (much more expensive to deploy)
+</code></pre></div>
+<hr />
+<h2 id="8-the-alignment-decision-framework">8. The Alignment Decision Framework<a class="headerlink" href="#8-the-alignment-decision-framework" title="Permanent link">&para;</a></h2>
+<h3 id="when-should-i-align">"When Should I Align?"<a class="headerlink" href="#when-should-i-align" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Is the base model already good enough with just prompting?
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>├── Yes → Don&#39;t align. Prompt engineering is free and immediate.
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>│
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>├── No — it doesn&#39;t know my domain language?
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>│   └── CPT (domain pre-training) → then SFT → then preference
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>│
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>├── No — it knows the domain but doesn&#39;t follow my format/style?
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>│   └── SFT (10K–100K examples of desired behavior)
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>│
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>├── No — it follows format but responses aren&#39;t good enough quality?
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>│   └── Preference optimisation (DPO is the default)
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>│
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>└── No — I need the model on a consumer GPU?
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    └── LoRA/QLoRA (fine-tune without massive hardware)
+</code></pre></div>
+<h3 id="hardware-requirements">Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Technique</th>
+<th style="text-align: left;">Minimum Hardware</th>
+<th style="text-align: left;">Typical Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Prompt engineering</strong></td>
+<td style="text-align: left;">Any device with API access</td>
+<td style="text-align: left;">Free — no training</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LoRA (7–8B model)</strong></td>
+<td style="text-align: left;">1× RTX 4090 (24 GB)</td>
+<td style="text-align: left;">Single GPU, few hours</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QLoRA (70B model)</strong></td>
+<td style="text-align: left;">1× RTX 4090 (24 GB)</td>
+<td style="text-align: left;">Single GPU, 1–2 days</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Full SFT (7–8B)</strong></td>
+<td style="text-align: left;">4× A100 (320 GB total)</td>
+<td style="text-align: left;">Multi-GPU, hours</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Full SFT (70B)</strong></td>
+<td style="text-align: left;">16+ A100 (1.3 TB total)</td>
+<td style="text-align: left;">Multi-node, days</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RLHF</strong></td>
+<td style="text-align: left;">32+ A100 (2.6 TB+)</td>
+<td style="text-align: left;">Multi-node, weeks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CPT</strong></td>
+<td style="text-align: left;">64+ A100</td>
+<td style="text-align: left;">Cluster, weeks–months</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pre-training</strong></td>
+<td style="text-align: left;">10,000+ H100</td>
+<td style="text-align: left;">Supercluster, months</td>
+</tr>
+</tbody>
+</table>
+<h3 id="costbenefit-summary">Cost/Benefit Summary<a class="headerlink" href="#costbenefit-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Technique</th>
+<th style="text-align: left;">Cost</th>
+<th style="text-align: left;">Time</th>
+<th style="text-align: left;">Impact</th>
+<th style="text-align: left;">Accessibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Prompt engineering</strong></td>
+<td style="text-align: left;">Free</td>
+<td style="text-align: left;">Minutes</td>
+<td style="text-align: left;">🟢 Moderate</td>
+<td style="text-align: left;">✅ Everyone</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RAG</strong></td>
+<td style="text-align: left;">Infrastructure only</td>
+<td style="text-align: left;">Hours</td>
+<td style="text-align: left;">🟢 High for knowledge</td>
+<td style="text-align: left;">✅ Everyone</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LoRA/QLoRA</strong></td>
+<td style="text-align: left;">$10–$100 (cloud GPU)</td>
+<td style="text-align: left;">Hours</td>
+<td style="text-align: left;">🟢 High for behaviour</td>
+<td style="text-align: left;">✅ Consumer GPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SFT</strong></td>
+<td style="text-align: left;">$100–$10K</td>
+<td style="text-align: left;">Hours–days</td>
+<td style="text-align: left;">🟡 High</td>
+<td style="text-align: left;">⚠️ Multi-GPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DPO</strong></td>
+<td style="text-align: left;">$100–$10K</td>
+<td style="text-align: left;">Hours–days</td>
+<td style="text-align: left;">🟡 High for quality</td>
+<td style="text-align: left;">⚠️ Multi-GPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Distillation</strong></td>
+<td style="text-align: left;">$1K–$50K</td>
+<td style="text-align: left;">Days</td>
+<td style="text-align: left;">🟡 Very high</td>
+<td style="text-align: left;">⚠️ Needs teacher access</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CPT</strong></td>
+<td style="text-align: left;">$10K–$1M</td>
+<td style="text-align: left;">Weeks</td>
+<td style="text-align: left;">🟡 Domain knowledge</td>
+<td style="text-align: left;">❌ Cluster</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pre-training</strong></td>
+<td style="text-align: left;">$5M–$100M+</td>
+<td style="text-align: left;">Months</td>
+<td style="text-align: left;">🔴 Maximum</td>
+<td style="text-align: left;">❌ Labs only</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.instant", "search.suggest", "search.highlight", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

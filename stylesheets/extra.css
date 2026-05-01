@@ -1,0 +1,99 @@
+/* Refined, Elegant Spacing for Multi-Page Layout */
+
+/* Page Titles (H1: L1 Model Architectures, T1 Foundation) */
+.md-typeset h1 {
+  margin-top: 2rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--md-default-fg-color);
+}
+
+/* Sections (H2: 1. What Is an Inference Engine?) */
+.md-typeset h2 {
+  margin-top: 3rem !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600;
+  color: var(--md-primary-color);
+  border-bottom: none;
+}
+
+/* Sub-sections (H3) */
+.md-typeset h3 {
+  margin-top: 2rem !important;
+  margin-bottom: 0.75rem !important;
+  font-weight: 600;
+}
+
+/* ADJACENT SIBLING RULES to prevent massive gaps */
+
+/* If a Section (H2) directly follows a Title (H1), squash the spacing */
+.md-typeset h1 + h2 {
+  margin-top: 1rem !important;
+}
+
+/* If a Sub-section (H3) directly follows a Section (H2), squash the spacing */
+.md-typeset h2 + h3 {
+  margin-top: 0.5rem !important;
+}
+
+/* Keep the blockquotes clean */
+.md-typeset blockquote {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   LEFT SIDEBAR / TOC STYLING
+   ========================================================================== */
+
+/* Make the TOC container tighter */
+.md-nav__item--active > .md-nav__list {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Target all Table of Contents links (which always have a hash #) */
+.md-nav__link[href*="#"] {
+  font-size: 0.7rem !important; /* Noticeably smaller than the 0.8rem default */
+  line-height: 1.15 !important;
+  
+  /* Ultra-compact vertical padding */
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+  
+  /* Softer neutral color so it recedes into the background */
+  color: #6b7280 !important; 
+  font-weight: 400 !important;
+}
+
+/* De-emphasize nested items (like "At a Glance" under an H2) even more */
+.md-nav__list .md-nav__list .md-nav__link[href*="#"] {
+  font-size: 0.65rem !important;
+  color: #9ca3af !important;
+}
+
+/* Active and Hover States - "The Blueish Colour" */
+.md-nav__link[href*="#"]:hover,
+.md-nav__link[href*="#"].md-nav__link--active {
+  color: #4051b5 !important; /* MkDocs Indigo Blue */
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   SCROLLBAR REMOVAL (Invisible but still scrollable)
+   ========================================================================== */
+
+/* Completely hide the WebKit scrollbar everywhere */
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none !important;
+}

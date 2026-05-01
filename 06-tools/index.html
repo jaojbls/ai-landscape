@@ -1,0 +1,1549 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for AI architectures, tools, and foundations.">
+      
+      
+      
+        <link rel="canonical" href="https://jaojbls.github.io/ai-landscape/06-tools/">
+      
+      
+        <link rel="prev" href="../05-inference-engines/">
+      
+      
+        <link rel="next" href="../07-llm-extensions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>L6 Tools - AI Landscape</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-tools-environments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Landscape" class="md-header__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Landscape
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              L6 Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Landscape" class="md-nav__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Landscape
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🥞 AI Stack Layers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🥞 AI Stack Layers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-model-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L1 Model Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-training-adaptation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 Training & Adaptation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3 Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-model-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L4 Model Formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-inference-engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5 Inference Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6 Tools
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6 Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-tool-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Tool Landscape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-model-servers-backend-no-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Model Servers (Backend — No UI)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Model Servers (Backend — No UI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ai-desktop-apps-runner-chat-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. AI Desktop Apps (Runner + Chat UI)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. AI Desktop Apps (Runner + Chat UI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-profiles_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ai-web-uis-frontend-needs-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. AI Web UIs (Frontend — Needs Backend)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. AI Web UIs (Frontend — Needs Backend)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-profiles_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cloud-ai-assistants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Cloud AI Assistants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cloud-inference-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cloud Inference Platforms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Cloud Inference Platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-aggregators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Aggregators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ai-ides-coding-assistants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. AI IDEs &amp; Coding Assistants
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. AI IDEs &amp; Coding Assistants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-profiles_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cli-coding-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. CLI Coding Agents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. CLI Coding Agents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-profiles_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-autonomous-agents-no-code-builders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Autonomous Agents &amp; No-Code Builders
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Autonomous Agents &amp; No-Code Builders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autonomous-development-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autonomous Development Agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-code-low-code-builders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No-Code / Low-Code Builders
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tool-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Tool Selection Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-llm-extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L7 LLM Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌱 Living Stack Tiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🌱 Living Stack Tiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L1-foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 Foundation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L2-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L3-adaptability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 Adaptability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ai-tools-environments">AI Tools &amp; Environments<a class="headerlink" href="#ai-tools-environments" title="Permanent link">&para;</a></h1>
+<h2 id="1-the-tool-landscape">1. The Tool Landscape<a class="headerlink" href="#1-the-tool-landscape" title="Permanent link">&para;</a></h2>
+<p>AI tools in 2026 span a wide range — from backend model servers to fully autonomous coding agents. Most tools are now <strong>hybrid</strong>: they can run models locally AND connect to cloud providers.</p>
+<p>The ecosystem breaks into 8 categories:</p>
+<ol>
+<li><strong>Model Servers</strong> — Backends that run/serve models via API (no UI)</li>
+<li><strong>AI Desktop Apps</strong> — Self-contained apps: local runner + chat UI + optional cloud</li>
+<li><strong>AI Web UIs</strong> — Browser interfaces that connect to model servers or cloud APIs</li>
+<li><strong>Cloud AI Assistants</strong> — Hosted chat interfaces (ChatGPT, Claude.ai, Gemini)</li>
+<li><strong>Cloud Inference Platforms</strong> — Run open-source models on rented hardware</li>
+<li><strong>AI IDEs &amp; Coding Assistants</strong> — Code editors with integrated AI</li>
+<li><strong>CLI Coding Agents</strong> — Terminal-native agentic coding tools</li>
+<li><strong>Autonomous Agents &amp; No-Code</strong> — Fully autonomous or no-code AI development</li>
+</ol>
+<hr />
+<h2 id="2-model-servers-backend-no-ui">2. Model Servers (Backend — No UI)<a class="headerlink" href="#2-model-servers-backend-no-ui" title="Permanent link">&para;</a></h2>
+<p>Pure inference backends that load models and expose an API. Other tools (UIs, IDEs, scripts) connect to them.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Interface</th>
+<th style="text-align: left;">Local</th>
+<th style="text-align: left;">Cloud</th>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Ollama</strong></td>
+<td style="text-align: left;">CLI + API</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅ (subscription)</td>
+<td style="text-align: left;">Cross-platform</td>
+<td style="text-align: left;">One-line setup, OpenAI-compatible API</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LocalAI</strong></td>
+<td style="text-align: left;">API</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">Cross-platform</td>
+<td style="text-align: left;">Drop-in OpenAI replacement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Foundry Local</strong></td>
+<td style="text-align: left;">SDK / API</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">Windows</td>
+<td style="text-align: left;">DirectML, .NET SDK</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lemonade</strong></td>
+<td style="text-align: left;">CLI + API</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">AMD Radeon</td>
+<td style="text-align: left;">Unified runtime: LLMs, ASR, TTS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Docker Model Runner</strong></td>
+<td style="text-align: left;">Docker API</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">Cross-platform</td>
+<td style="text-align: left;">Containerised model serving</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-profiles">Key Profiles<a class="headerlink" href="#key-profiles" title="Permanent link">&para;</a></h3>
+<p><strong>Ollama</strong> — The developer's backbone. One command to pull and run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ollama<span class="w"> </span>run<span class="w"> </span>llama3.1:8b
+</code></pre></div>
+<p>Exposes an OpenAI-compatible API at <code>localhost:11434</code>. Powers Open WebUI, AnythingLLM, and many other tools. Supports both local models and cloud frontier models (subscription).</p>
+<p><strong>Foundry Local</strong> — Microsoft's Windows-native runner. Uses DirectML for GPU acceleration, integrates with .NET and Python SDKs. Pre-bundled models optimised for Windows hardware.</p>
+<p><strong>Lemonade</strong> — AMD's unified AI runtime for Radeon GPUs. Runs LLMs, speech recognition, and text-to-speech in a single package. Optimised for AMD hardware that's often underserved by the NVIDIA-centric ecosystem.</p>
+<hr />
+<h2 id="3-ai-desktop-apps-runner-chat-ui">3. AI Desktop Apps (Runner + Chat UI)<a class="headerlink" href="#3-ai-desktop-apps-runner-chat-ui" title="Permanent link">&para;</a></h2>
+<p>Self-contained desktop apps that bundle a local inference engine with a chat interface. Most now also support cloud model APIs for access to frontier models.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Local Runner</th>
+<th style="text-align: left;">Cloud APIs</th>
+<th style="text-align: left;">RAG</th>
+<th style="text-align: left;">Cost</th>
+<th style="text-align: left;">Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>LM Studio</strong></td>
+<td style="text-align: left;">✅ (llama.cpp)</td>
+<td style="text-align: left;">✅ (paid tier)</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">Free</td>
+<td style="text-align: left;">Visual model browser, local API server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Jan</strong></td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅ (paid tier)</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">Free, open-source</td>
+<td style="text-align: left;">Privacy-first, clean UI, hybrid mode</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GPT4All</strong></td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅ Built-in</td>
+<td style="text-align: left;">Free, open-source</td>
+<td style="text-align: left;">Simplest setup, bundled document chat</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-profiles_1">Key Profiles<a class="headerlink" href="#key-profiles_1" title="Permanent link">&para;</a></h3>
+<p><strong>LM Studio</strong> — The friendliest entry point for local AI. Browse and download models through a polished GUI. Can expose a local API server for other tools to connect to. Now supports cloud model subscriptions for frontier models like GPT-4o and Claude.</p>
+<p><strong>Jan</strong> — Privacy-first with a clean UI. Works fully offline, but can seamlessly switch to cloud APIs when you need frontier model capabilities. Open-source.</p>
+<p><strong>GPT4All</strong> — The beginner's choice. Download, install, chat. Built-in RAG lets you drag-and-drop documents for Q&amp;A without any setup.</p>
+<hr />
+<h2 id="4-ai-web-uis-frontend-needs-backend">4. AI Web UIs (Frontend — Needs Backend)<a class="headerlink" href="#4-ai-web-uis-frontend-needs-backend" title="Permanent link">&para;</a></h2>
+<p>Browser-based interfaces that connect to model servers or cloud APIs. They don't run models themselves — they need a backend like Ollama or a cloud provider.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Connects To</th>
+<th style="text-align: left;">Multi-user</th>
+<th style="text-align: left;">RAG</th>
+<th style="text-align: left;">Cost</th>
+<th style="text-align: left;">Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Open WebUI</strong></td>
+<td style="text-align: left;">Ollama, cloud APIs</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">Free, open-source</td>
+<td style="text-align: left;">"Self-hosted ChatGPT"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AnythingLLM</strong></td>
+<td style="text-align: left;">35+ providers</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅ Built-in vector DB</td>
+<td style="text-align: left;">Free, open-source</td>
+<td style="text-align: left;">Universal provider hub</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-profiles_2">Key Profiles<a class="headerlink" href="#key-profiles_2" title="Permanent link">&para;</a></h3>
+<p><strong>Open WebUI</strong> — "ChatGPT, but self-hosted." Browser-based, multi-model, multi-user, with built-in RAG. Connects to Ollama via <code>docker compose up</code>. The go-to UI for teams running local models.</p>
+<p><strong>AnythingLLM</strong> — The universal connector. Supports 35+ LLM providers across 4 categories:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Provider Type</th>
+<th style="text-align: left;">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Local runners</strong></td>
+<td style="text-align: left;">Ollama, LM Studio, LocalAI, Foundry Local, Lemonade, NVIDIA NIM, Docker Model Runner</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cloud AI vendors</strong></td>
+<td style="text-align: left;">OpenAI, Anthropic, Gemini, Mistral, DeepSeek, xAI, Cohere, Moonshot</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cloud inference</strong></td>
+<td style="text-align: left;">Groq, Together AI, Fireworks AI, AWS Bedrock, SambaNova, HuggingFace</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>API aggregators</strong></td>
+<td style="text-align: left;">OpenRouter, LiteLLM, APIpie, CometAPI, Generic OpenAI</td>
+</tr>
+</tbody>
+</table>
+<p>Built-in vector database, document embedding, and workspace management. Desktop app and self-hosted server.</p>
+<hr />
+<h2 id="5-cloud-ai-assistants">5. Cloud AI Assistants<a class="headerlink" href="#5-cloud-ai-assistants" title="Permanent link">&para;</a></h2>
+<p>The most widely used AI tools in the world. Cloud-hosted, subscription-based, no setup required.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Vendor</th>
+<th style="text-align: left;">Free Tier</th>
+<th style="text-align: left;">Paid</th>
+<th style="text-align: left;">Key Differentiator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ChatGPT</strong></td>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">$20/mo</td>
+<td style="text-align: left;">Most popular, GPT-4o / o3</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Claude.ai</strong></td>
+<td style="text-align: left;">Anthropic</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">$20/mo</td>
+<td style="text-align: left;">Best reasoning, extended thinking, artifacts</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Gemini</strong></td>
+<td style="text-align: left;">Google</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">$20/mo</td>
+<td style="text-align: left;">Deepest Google integration, largest free context</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kimi</strong></td>
+<td style="text-align: left;">Moonshot AI</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">Paid tier</td>
+<td style="text-align: left;">Strong reasoning, multilingual</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Perplexity</strong></td>
+<td style="text-align: left;">Perplexity AI</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">$20/mo</td>
+<td style="text-align: left;">Search-first with citations</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mercury</strong></td>
+<td style="text-align: left;">Inception Labs</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">Paid tier</td>
+<td style="text-align: left;">First diffusion LLM, 1000+ tok/s, code + reasoning</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 Key insight:</strong> For most people, a cloud assistant is their first and primary AI experience. Everything else in this document serves developers and power users who want more control.</p>
+</blockquote>
+<hr />
+<h2 id="6-cloud-inference-platforms">6. Cloud Inference Platforms<a class="headerlink" href="#6-cloud-inference-platforms" title="Permanent link">&para;</a></h2>
+<p>Run <strong>open-source models</strong> (Llama, Qwen, Mistral, etc.) on their hardware. You pick the model, they provide the compute. Different from cloud assistants because you're renting inference, not using a proprietary product.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Hardware</th>
+<th style="text-align: left;">Differentiator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Groq</strong></td>
+<td style="text-align: left;">Custom LPU</td>
+<td style="text-align: left;">Fastest inference, ultra-low latency</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Together AI</strong></td>
+<td style="text-align: left;">GPU cluster</td>
+<td style="text-align: left;">Wide model selection, competitive pricing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fireworks AI</strong></td>
+<td style="text-align: left;">GPU cluster</td>
+<td style="text-align: left;">Fastest compound AI, function calling optimised</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AWS Bedrock</strong></td>
+<td style="text-align: left;">AWS infrastructure</td>
+<td style="text-align: left;">Enterprise, private VPC, managed</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SambaNova</strong></td>
+<td style="text-align: left;">Custom SN40L chip</td>
+<td style="text-align: left;">High throughput, enterprise</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>HuggingFace Inference</strong></td>
+<td style="text-align: left;">GPU cluster</td>
+<td style="text-align: left;">Largest model hub, community</td>
+</tr>
+</tbody>
+</table>
+<h3 id="api-aggregators">API Aggregators<a class="headerlink" href="#api-aggregators" title="Permanent link">&para;</a></h3>
+<p>One API → many providers. These don't run models — they route your request to the best/cheapest provider:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Value Prop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>OpenRouter</strong></td>
+<td style="text-align: left;">Unified API, price comparison across providers</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LiteLLM</strong></td>
+<td style="text-align: left;">OpenAI-compatible proxy, self-hostable</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-ai-ides-coding-assistants">7. AI IDEs &amp; Coding Assistants<a class="headerlink" href="#7-ai-ides-coding-assistants" title="Permanent link">&para;</a></h2>
+<p>Full code editors with integrated AI — the primary way developers interact with AI in 2026.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Price</th>
+<th style="text-align: left;">Key Differentiator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Cursor</strong></td>
+<td style="text-align: left;">AI IDE (VS Code fork)</td>
+<td style="text-align: left;">$20/mo</td>
+<td style="text-align: left;">Composer (multi-file), Background Agents</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Windsurf</strong></td>
+<td style="text-align: left;">AI IDE (VS Code fork)</td>
+<td style="text-align: left;">$15/mo</td>
+<td style="text-align: left;">Cascade (agent manager), Arena Mode</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Antigravity</strong></td>
+<td style="text-align: left;">AI IDE</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Google DeepMind, advanced agentic coding</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GitHub Copilot</strong></td>
+<td style="text-align: left;">IDE Plugin</td>
+<td style="text-align: left;">$10/mo</td>
+<td style="text-align: left;">Enterprise standard, best test generation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Zed</strong></td>
+<td style="text-align: left;">Native Editor</td>
+<td style="text-align: left;">Free/usage</td>
+<td style="text-align: left;">Rust-native, starts in &lt;1s, real-time collab</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Continue</strong></td>
+<td style="text-align: left;">IDE Extension</td>
+<td style="text-align: left;">Free</td>
+<td style="text-align: left;">Open-source, multi-provider + local via Ollama</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>JetBrains AI</strong></td>
+<td style="text-align: left;">IDE Plugin</td>
+<td style="text-align: left;">$10/mo</td>
+<td style="text-align: left;">IntelliJ, PyCharm, WebStorm integration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-profiles_3">Key Profiles<a class="headerlink" href="#key-profiles_3" title="Permanent link">&para;</a></h3>
+<p><strong>Cursor</strong> — The most popular AI IDE in 2026. A VS Code fork with deep AI integration: Composer for multi-file edits, tab completion, chat, and Background Agents that run autonomously. The "default choice" for professional developers.</p>
+<p><strong>Windsurf</strong> — Strong competitor with unique features: Cascade (an agent that manages the full edit lifecycle), Arena Mode (A/B test two models on the same task). More beginner-friendly than Cursor.</p>
+<p><strong>Antigravity</strong> — Google DeepMind's AI IDE with advanced agentic capabilities. Deep integration with Google's ecosystem and Gemini models. Browser automation, MCP support, and sophisticated planning workflows.</p>
+<p><strong>GitHub Copilot</strong> — The enterprise standard. Deepest GitHub integration, best test generation, conservative approach to code changes. The safest choice for corporate environments.</p>
+<blockquote>
+<p><strong>💡 Pro tip (2026):</strong> Most senior devs use <strong>two tools</strong> — an AI IDE (Cursor, Windsurf, or Antigravity) for daily editing + a CLI agent (Claude Code or Gemini CLI) for complex architectural tasks.</p>
+</blockquote>
+<hr />
+<h2 id="8-cli-coding-agents">8. CLI Coding Agents<a class="headerlink" href="#8-cli-coding-agents" title="Permanent link">&para;</a></h2>
+<p>Terminal-native tools for <strong>agentic coding</strong> — AI that reads your codebase, edits files, runs commands, and iterates autonomously.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Vendor</th>
+<th style="text-align: left;">Key Feature</th>
+<th style="text-align: left;">Model Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Claude Code</strong></td>
+<td style="text-align: left;">Anthropic</td>
+<td style="text-align: left;">1M context, filesystem + terminal access</td>
+<td style="text-align: left;">Claude models</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Gemini CLI</strong></td>
+<td style="text-align: left;">Google</td>
+<td style="text-align: left;">Google ecosystem, Gemini models</td>
+<td style="text-align: left;">Gemini models</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OpenAI Codex</strong></td>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">Best review UI, worktree support</td>
+<td style="text-align: left;">GPT models</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Aider</strong></td>
+<td style="text-align: left;">Open-source</td>
+<td style="text-align: left;">Git-aware, auto-commits, diff editing</td>
+<td style="text-align: left;">Multi-provider</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cline</strong></td>
+<td style="text-align: left;">Open-source</td>
+<td style="text-align: left;">VS Code extension, browser automation, MCP</td>
+<td style="text-align: left;">Multi-provider</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-profiles_4">Key Profiles<a class="headerlink" href="#key-profiles_4" title="Permanent link">&para;</a></h3>
+<p><strong>Claude Code</strong> — A terminal-native AI agent that goes far beyond autocomplete. It reads your codebase → plans changes → edits files → runs tests → iterates. Full system access. Best for complex refactoring and multi-file feature development.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@anthropic-ai/claude-code
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>claude
+</code></pre></div>
+<p><strong>Gemini CLI</strong> — Google's terminal agent, powered by Gemini models. Deep integration with Google Cloud and the broader Google developer ecosystem.</p>
+<p><strong>Aider</strong> — The git-native AI coding tool. Automatically creates git commits for each change, shows diffs before applying. Supports multiple AI providers including local models via Ollama.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>aider-chat
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aider<span class="w"> </span>--model<span class="w"> </span>claude-3-sonnet
+</code></pre></div>
+<p><strong>Cline</strong> — An in-editor agent (VS Code extension) that creates a plan, then executes file edits, terminal commands, and browser actions. Shows each step for human approval. 5M+ installs.</p>
+<hr />
+<h2 id="9-autonomous-agents-no-code-builders">9. Autonomous Agents &amp; No-Code Builders<a class="headerlink" href="#9-autonomous-agents-no-code-builders" title="Permanent link">&para;</a></h2>
+<h3 id="autonomous-development-agents">Autonomous Development Agents<a class="headerlink" href="#autonomous-development-agents" title="Permanent link">&para;</a></h3>
+<p>Tools that operate with <strong>minimal human guidance</strong> — give them a task and they plan, code, test, and deploy:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Price</th>
+<th style="text-align: left;">How It Works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Devin AI</strong></td>
+<td style="text-align: left;">Autonomous agent</td>
+<td style="text-align: left;">$20/mo</td>
+<td style="text-align: left;">End-to-end: plan → code → test → deploy</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Replit Agent</strong></td>
+<td style="text-align: left;">Browser IDE</td>
+<td style="text-align: left;">$20/mo</td>
+<td style="text-align: left;">Full-stack from prompt, zero local setup</td>
+</tr>
+</tbody>
+</table>
+<h3 id="no-code-low-code-builders">No-Code / Low-Code Builders<a class="headerlink" href="#no-code-low-code-builders" title="Permanent link">&para;</a></h3>
+<p>For rapid prototyping without writing code:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Lovable</strong></td>
+<td style="text-align: left;">Web app prototypes</td>
+<td style="text-align: left;">Deployed React apps from descriptions</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bolt.new</strong></td>
+<td style="text-align: left;">Full-stack apps</td>
+<td style="text-align: left;">Working apps in the browser</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>v0</strong> (Vercel)</td>
+<td style="text-align: left;">UI components</td>
+<td style="text-align: left;">React/Next.js components from prompts</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-tool-selection-guide">10. Tool Selection Guide<a class="headerlink" href="#10-tool-selection-guide" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>What do you need?
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── Chat with AI (no setup)?
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│   └── ChatGPT, Claude.ai, or Gemini
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>├── Run models locally?
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   ├── Prefer a GUI? → LM Studio or Jan
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│   ├── Prefer terminal / API? → Ollama
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│   ├── Windows + DirectML? → Foundry Local
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│   ├── AMD GPU? → Lemonade
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>│   └── Browser-based (team)? → Open WebUI + Ollama
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>│
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>├── Run open-source models in the cloud?
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>│   ├── Fastest inference? → Groq
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>│   ├── Widest selection? → Together AI
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>│   └── Enterprise / AWS? → Bedrock
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>│
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>├── Connect to many providers?
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>│   └── AnythingLLM (35+ providers, built-in RAG)
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>│
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>├── AI-assisted coding?
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>│   ├── Full IDE? → Cursor, Windsurf, or Antigravity
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>│   ├── Enterprise / GitHub? → GitHub Copilot
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>│   ├── JetBrains user? → JetBrains AI
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>│   ├── Open-source / local? → Continue
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>│   ├── Terminal agentic? → Claude Code or Gemini CLI
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>│   └── Git-aware? → Aider
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>│
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>├── Fully autonomous development?
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>│   └── Devin AI or Replit Agent
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>│
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>└── Rapid prototype (no code)?
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>    └── Lovable, Bolt.new, or v0
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.instant", "search.suggest", "search.highlight", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

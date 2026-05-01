@@ -1,0 +1,1880 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for AI architectures, tools, and foundations.">
+      
+      
+      
+        <link rel="canonical" href="https://jaojbls.github.io/ai-landscape/L3-adaptability/">
+      
+      
+        <link rel="prev" href="../L2-alignment/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>T3 Adaptability - AI Landscape</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adaptability-the-dynamic-layer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Landscape" class="md-header__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Landscape
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T3 Adaptability
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Landscape" class="md-nav__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Landscape
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🥞 AI Stack Layers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🥞 AI Stack Layers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-model-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L1 Model Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-training-adaptation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 Training & Adaptation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3 Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-model-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L4 Model Formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-inference-engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5 Inference Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6 Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-llm-extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L7 LLM Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌱 Living Stack Tiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🌱 Living Stack Tiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L1-foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 Foundation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L2-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 Adaptability
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 Adaptability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-adaptability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What Is Adaptability?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rag-retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. RAG — Retrieval-Augmented Generation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. RAG — Retrieval-Augmented Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-full-rag-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Full RAG Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunking-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunking Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reranking-the-quality-multiplier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reranking — The Quality Multiplier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-rag-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced RAG Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-agents-from-talkers-to-doers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Agents — From Talkers to Doers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Agents — From Talkers to Doers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-react-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ReAct Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-architecture-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Architecture Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Frameworks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-safety-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Safety &amp; Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tool-use-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tool Use &amp; Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tool Use &amp; Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-calling-the-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function Calling — The Foundation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-model-context-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP — Model Context Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a2a-agent-to-agent-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A2A — Agent-to-Agent Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-memory-persistence-across-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Memory — Persistence Across Sessions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Memory — Persistence Across Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-rag-vs-fine-tuning-the-definitive-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. RAG vs Fine-Tuning — The Definitive Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. RAG vs Fine-Tuning — The Definitive Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-hybrid-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Hybrid Approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-the-adaptability-advantage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. The Adaptability Advantage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="adaptability-the-dynamic-layer">Adaptability — The Dynamic Layer<a class="headerlink" href="#adaptability-the-dynamic-layer" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Living Stack — Tier 3</strong> | The part that changes <strong>daily</strong></p>
+<p>For the technology reference, see <a href="../07-llm-extensions/">07-llm-extensions.md</a></p>
+</blockquote>
+<hr />
+<h2 id="1-what-is-adaptability">1. What Is Adaptability?<a class="headerlink" href="#1-what-is-adaptability" title="Permanent link">&para;</a></h2>
+<p>Adaptability is everything you add <strong>at runtime</strong> — without retraining or modifying the model weights. It's the fastest-changing, most accessible layer of the AI stack.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Foundation (static, yearly)         → &quot;The brain&quot;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Alignment (semi-static, monthly)    → &quot;Personality and skills&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Adaptability (dynamic, daily)       → &quot;Current knowledge, tools, and memory&quot;
+</code></pre></div>
+<p>This is where <strong>most practitioners spend their time</strong>. You don't pre-train models. You rarely fine-tune. But you connect them to tools, inject knowledge, and give them memory — every day.</p>
+<hr />
+<h2 id="2-rag-retrieval-augmented-generation">2. RAG — Retrieval-Augmented Generation<a class="headerlink" href="#2-rag-retrieval-augmented-generation" title="Permanent link">&para;</a></h2>
+<p>RAG is the most impactful adaptability technique. It gives an LLM access to <strong>external knowledge</strong> without changing the model itself.</p>
+<h3 id="the-full-rag-pipeline">The Full RAG Pipeline<a class="headerlink" href="#the-full-rag-pipeline" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────── INDEX PHASE (once or on schedule) ───────────────────┐
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│                                                                          │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│  Documents (PDF, Markdown, DB, API)                                      │
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│      │                                                                   │
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│      ├── 1. Load &amp; parse (extract text, handle tables, images)           │
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│      ├── 2. Chunk (split into 256–1024 token segments)                   │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│      ├── 3. Embed (convert each chunk to a vector)                       │
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│      └── 4. Store (insert vectors + metadata into vector DB)             │
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│                                                                          │
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>└──────────────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>┌─────────────────── QUERY PHASE (every request) ─────────────────────────┐
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│                                                                          │
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│  User Query                                                              │
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│      │                                                                   │
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│      ├── 1. Embed the query (same model as indexing)                     │
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│      ├── 2. Search vector DB (find top-K most similar chunks)            │
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│      ├── 3. Rerank (optional: re-score results with a cross-encoder)     │
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│      ├── 4. Inject into prompt (retrieved chunks become context)         │
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│      └── 5. LLM generates answer (grounded in retrieved data)            │
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│                                                                          │
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>└──────────────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="chunking-strategies">Chunking Strategies<a class="headerlink" href="#chunking-strategies" title="Permanent link">&para;</a></h3>
+<p>How you split documents dramatically affects retrieval quality:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Strategy</th>
+<th style="text-align: left;">How It Works</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Chunk Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Fixed-size</strong></td>
+<td style="text-align: left;">Split every N tokens</td>
+<td style="text-align: left;">Simple, predictable</td>
+<td style="text-align: left;">256–512 tokens</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Recursive</strong></td>
+<td style="text-align: left;">Split by headers → paragraphs → sentences</td>
+<td style="text-align: left;">Structured docs (Markdown, HTML)</td>
+<td style="text-align: left;">Varies</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Semantic</strong></td>
+<td style="text-align: left;">Split on meaning boundaries (topic shifts)</td>
+<td style="text-align: left;">Unstructured text</td>
+<td style="text-align: left;">Varies</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sentence-window</strong></td>
+<td style="text-align: left;">Retrieve sentence, expand to surrounding window</td>
+<td style="text-align: left;">Precise retrieval + context</td>
+<td style="text-align: left;">Sentence + window</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Parent-child</strong></td>
+<td style="text-align: left;">Small chunks for search, return parent chunk</td>
+<td style="text-align: left;">Best of both (precision + context)</td>
+<td style="text-align: left;">Child: 128, Parent: 512</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 Start with recursive chunking at 512 tokens with 10–20% overlap.</strong> It works well for most cases. Optimise later.</p>
+</blockquote>
+<h3 id="embedding-models">Embedding Models<a class="headerlink" href="#embedding-models" title="Permanent link">&para;</a></h3>
+<p>Embedding models convert text into dense vectors that capture semantic meaning:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Dimensions</th>
+<th style="text-align: left;">Max Tokens</th>
+<th style="text-align: left;">Creator</th>
+<th style="text-align: left;">Strengths</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>text-embedding-3-large</strong></td>
+<td style="text-align: left;">3072</td>
+<td style="text-align: left;">8191</td>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">Best overall, adjustable dimensions</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>text-embedding-3-small</strong></td>
+<td style="text-align: left;">1536</td>
+<td style="text-align: left;">8191</td>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">Cost-efficient, 5x cheaper</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>BGE-large-en-v1.5</strong></td>
+<td style="text-align: left;">1024</td>
+<td style="text-align: left;">512</td>
+<td style="text-align: left;">BAAI</td>
+<td style="text-align: left;">Best open-source English</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>E5-large-v2</strong></td>
+<td style="text-align: left;">1024</td>
+<td style="text-align: left;">512</td>
+<td style="text-align: left;">Microsoft</td>
+<td style="text-align: left;">Strong general-purpose</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nomic Embed Text v1.5</strong></td>
+<td style="text-align: left;">768</td>
+<td style="text-align: left;">8192</td>
+<td style="text-align: left;">Nomic AI</td>
+<td style="text-align: left;">Long context, open-source</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GTE-Qwen2</strong></td>
+<td style="text-align: left;">1536</td>
+<td style="text-align: left;">8192</td>
+<td style="text-align: left;">Alibaba</td>
+<td style="text-align: left;">Best open-source multilingual</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Voyage-3</strong></td>
+<td style="text-align: left;">1024</td>
+<td style="text-align: left;">32000</td>
+<td style="text-align: left;">Voyage AI</td>
+<td style="text-align: left;">Very long context</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Choosing an embedding model:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Need best quality, budget allows?         → text-embedding-3-large
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Need cost efficiency?                     → text-embedding-3-small
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Need open-source / self-hosted?           → BGE-large or GTE-Qwen2
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Need long document support?               → Nomic Embed or Voyage-3
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Need multilingual?                        → GTE-Qwen2
+</code></pre></div></p>
+<h3 id="vector-databases">Vector Databases<a class="headerlink" href="#vector-databases" title="Permanent link">&para;</a></h3>
+<p>Where you store and search your embeddings:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Database</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Scaling</th>
+<th style="text-align: left;">Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ChromaDB</strong></td>
+<td style="text-align: left;">Embedded</td>
+<td style="text-align: left;">Prototyping, small scale</td>
+<td style="text-align: left;">Single node</td>
+<td style="text-align: left;">Simplest setup, in-process</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Qdrant</strong></td>
+<td style="text-align: left;">Dedicated</td>
+<td style="text-align: left;">Production, high performance</td>
+<td style="text-align: left;">Distributed</td>
+<td style="text-align: left;">Fast, rich filtering</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Weaviate</strong></td>
+<td style="text-align: left;">Dedicated</td>
+<td style="text-align: left;">Multi-modal search</td>
+<td style="text-align: left;">Distributed</td>
+<td style="text-align: left;">Hybrid search (vector + keyword)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pinecone</strong></td>
+<td style="text-align: left;">Cloud SaaS</td>
+<td style="text-align: left;">Managed, zero-ops</td>
+<td style="text-align: left;">Fully managed</td>
+<td style="text-align: left;">No infrastructure to manage</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>pgvector</strong></td>
+<td style="text-align: left;">PostgreSQL ext.</td>
+<td style="text-align: left;">Existing Postgres infrastructure</td>
+<td style="text-align: left;">PostgreSQL scaling</td>
+<td style="text-align: left;">No new database needed</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Milvus</strong></td>
+<td style="text-align: left;">Dedicated</td>
+<td style="text-align: left;">Large-scale enterprise</td>
+<td style="text-align: left;">Distributed</td>
+<td style="text-align: left;">Billion-scale vectors</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Choosing a vector database:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Just prototyping?                         → ChromaDB (in-process, 5 lines of code)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Already using PostgreSQL?                 → pgvector (no new infra)
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Need production performance?              → Qdrant or Weaviate
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Don&#39;t want to manage infrastructure?      → Pinecone (managed SaaS)
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Enterprise scale (billions of vectors)?   → Milvus
+</code></pre></div></p>
+<h3 id="reranking-the-quality-multiplier">Reranking — The Quality Multiplier<a class="headerlink" href="#reranking-the-quality-multiplier" title="Permanent link">&para;</a></h3>
+<p>Initial vector search is fast but approximate. Reranking re-scores the top-K results with a more accurate (but slower) cross-encoder model:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Query → Vector search (fast, broad) → Top 20 candidates
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    → Reranker (slow, precise) → Top 5 best results
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    → Inject into LLM context
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Reranker</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Cohere Rerank</strong></td>
+<td style="text-align: left;">API</td>
+<td style="text-align: left;">Best quality, easiest to use</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>BGE-Reranker</strong></td>
+<td style="text-align: left;">Open-source</td>
+<td style="text-align: left;">Self-hosted, no API costs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FlashRank</strong></td>
+<td style="text-align: left;">Open-source</td>
+<td style="text-align: left;">Fast, lightweight</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 Reranking typically improves RAG quality by 10–30% with minimal added latency.</strong> Always worth trying.</p>
+</blockquote>
+<h3 id="advanced-rag-patterns">Advanced RAG Patterns<a class="headerlink" href="#advanced-rag-patterns" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">How It Works</th>
+<th style="text-align: left;">When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>HyDE</strong></td>
+<td style="text-align: left;">Generate hypothetical answer, embed that instead of query</td>
+<td style="text-align: left;">Short queries, vague questions</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multi-Query</strong></td>
+<td style="text-align: left;">Generate multiple query variants, union results</td>
+<td style="text-align: left;">Complex questions needing diverse angles</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Agentic RAG</strong></td>
+<td style="text-align: left;">Agent decides what to retrieve and when</td>
+<td style="text-align: left;">Multi-step research tasks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Corrective RAG</strong></td>
+<td style="text-align: left;">Evaluate retrieval quality, re-query if poor</td>
+<td style="text-align: left;">High-stakes applications</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Graph RAG</strong></td>
+<td style="text-align: left;">Combine knowledge graphs with vector search</td>
+<td style="text-align: left;">Highly connected data (relationships)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-agents-from-talkers-to-doers">3. Agents — From Talkers to Doers<a class="headerlink" href="#3-agents-from-talkers-to-doers" title="Permanent link">&para;</a></h2>
+<p>An AI agent is an LLM that can <strong>plan, use tools, and iterate</strong> autonomously to complete a task.</p>
+<h3 id="the-react-pattern">The ReAct Pattern<a class="headerlink" href="#the-react-pattern" title="Permanent link">&para;</a></h3>
+<p>Most agents follow <strong>ReAct</strong> (Reasoning + Acting):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>User: &quot;Find the cheapest flight from Sydney to Tokyo next month&quot;
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Agent:
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  Think: I need to search for flights. Let me use the flight search tool.
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  Act:   [calls flight_search(from=&quot;SYD&quot;, to=&quot;TYO&quot;, date=&quot;2026-06&quot;)]
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  Observe: Found 12 results. Cheapest is Jetstar at $489.
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  Think: I should check if there are flexible date options.
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  Act:   [calls flight_search(from=&quot;SYD&quot;, to=&quot;TYO&quot;, date=&quot;2026-06&quot;, flexible=true)]
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>  Observe: Flexible dates show $425 on June 12.
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  Answer: &quot;The cheapest flight is Jetstar on June 12 at $425.&quot;
+</code></pre></div>
+<h3 id="agent-architecture-types">Agent Architecture Types<a class="headerlink" href="#agent-architecture-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">How It Works</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Single Agent</strong></td>
+<td style="text-align: left;">One LLM + tools, iterative loop</td>
+<td style="text-align: left;">Simple tasks, coding agents</td>
+<td style="text-align: left;">Low</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multi-Agent</strong></td>
+<td style="text-align: left;">Multiple specialised agents coordinating</td>
+<td style="text-align: left;">Complex workflows</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Planner-Executor</strong></td>
+<td style="text-align: left;">One agent plans, another executes</td>
+<td style="text-align: left;">Tasks needing review/approval</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hierarchical</strong></td>
+<td style="text-align: left;">Manager agent delegates to worker agents</td>
+<td style="text-align: left;">Enterprise automation</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reflexion</strong></td>
+<td style="text-align: left;">Agent evaluates its own output, retries</td>
+<td style="text-align: left;">Quality-critical tasks</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="agent-frameworks">Agent Frameworks<a class="headerlink" href="#agent-frameworks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Framework</th>
+<th style="text-align: left;">Approach</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Learning Curve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>LangGraph</strong></td>
+<td style="text-align: left;">Stateful graphs with cycles</td>
+<td style="text-align: left;">Complex, multi-step workflows</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CrewAI</strong></td>
+<td style="text-align: left;">Role-based agent teams</td>
+<td style="text-align: left;">Task delegation, team simulation</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AutoGen</strong></td>
+<td style="text-align: left;">Multi-agent conversation</td>
+<td style="text-align: left;">Collaborative problem-solving</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DSPy</strong></td>
+<td style="text-align: left;">Programmatic prompt optimisation</td>
+<td style="text-align: left;">Systematic prompt engineering</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LlamaIndex</strong></td>
+<td style="text-align: left;">RAG-focused orchestration</td>
+<td style="text-align: left;">Knowledge-heavy applications</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Smolagents</strong> (HF)</td>
+<td style="text-align: left;">Minimal, code-first agents</td>
+<td style="text-align: left;">Quick prototyping</td>
+<td style="text-align: left;">Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="agent-safety-evaluation">Agent Safety &amp; Evaluation<a class="headerlink" href="#agent-safety-evaluation" title="Permanent link">&para;</a></h3>
+<p>Agents that act in the real world need guardrails:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Risk</th>
+<th style="text-align: left;">Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Unintended actions</strong></td>
+<td style="text-align: left;">Human-in-the-loop approval for destructive operations</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Infinite loops</strong></td>
+<td style="text-align: left;">Max iteration limits, cost caps</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hallucinated tool calls</strong></td>
+<td style="text-align: left;">Schema validation, parameter checking</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data leakage</strong></td>
+<td style="text-align: left;">Scope tool access, least-privilege principles</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cost runaway</strong></td>
+<td style="text-align: left;">Token budgets, billing alerts</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-tool-use-protocols">4. Tool Use &amp; Protocols<a class="headerlink" href="#4-tool-use-protocols" title="Permanent link">&para;</a></h2>
+<h3 id="function-calling-the-foundation">Function Calling — The Foundation<a class="headerlink" href="#function-calling-the-foundation" title="Permanent link">&para;</a></h3>
+<p>Function calling is the mechanism that lets an LLM <strong>request specific actions</strong> in a structured format:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>1. You define available functions (name, parameters, descriptions)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>2. User sends a message
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>3. LLM decides if a function should be called
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>4. LLM outputs structured JSON: {&quot;function&quot;: &quot;get_weather&quot;, &quot;args&quot;: {&quot;city&quot;: &quot;Sydney&quot;}}
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>5. Your code executes the function
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>6. Result is fed back to the LLM
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>7. LLM generates the final response
+</code></pre></div>
+<h3 id="mcp-model-context-protocol">MCP — Model Context Protocol<a class="headerlink" href="#mcp-model-context-protocol" title="Permanent link">&para;</a></h3>
+<p>MCP is an <strong>open standard</strong> (created by Anthropic, adopted widely) that provides a universal way for AI tools to connect to external tools and data sources.</p>
+<p><strong>The problem it solves:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Before MCP: N tools × M AI apps = N×M custom integrations
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>After MCP:  N tools → MCP ← M AI apps = N+M implementations
+</code></pre></div></p>
+<p><strong>Architecture:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>┌─────────────┐     ┌─────────────┐     ┌─────────────────┐
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>│  MCP Host   │     │  MCP Client │     │   MCP Server    │
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>│  (AI app)   │────▶│  (in host)  │────▶│  (tool/data)    │
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│             │     │             │     │                 │
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>│  Claude     │     │  Manages    │     │  - Notion       │
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│  Cursor     │     │  connections│     │  - GitHub       │
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>│  Antigravity│     │             │     │  - Filesystem   │
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>└─────────────┘     └─────────────┘     └─────────────────┘
+</code></pre></div></p>
+<p><strong>What MCP servers provide:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Capability</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tools</strong></td>
+<td style="text-align: left;">Functions the AI can call</td>
+<td style="text-align: left;"><code>search_notion</code>, <code>create_github_issue</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resources</strong></td>
+<td style="text-align: left;">Data the AI can read</td>
+<td style="text-align: left;">Database contents, file listings</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Prompts</strong></td>
+<td style="text-align: left;">Reusable prompt templates</td>
+<td style="text-align: left;">Code review template, analysis framework</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key MCP servers:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Server</th>
+<th style="text-align: left;">What It Connects To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>filesystem</code></td>
+<td style="text-align: left;">Local files and directories</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>notion</code></td>
+<td style="text-align: left;">Notion pages, databases</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>github</code></td>
+<td style="text-align: left;">Repos, issues, PRs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>slack</code></td>
+<td style="text-align: left;">Channels, messages</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>postgres</code></td>
+<td style="text-align: left;">PostgreSQL databases</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>brave-search</code></td>
+<td style="text-align: left;">Web search</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 Think of MCP as "USB-C for AI"</strong> — a single standard connector that works with any tool and any AI application.</p>
+</blockquote>
+<h3 id="a2a-agent-to-agent-protocol">A2A — Agent-to-Agent Protocol<a class="headerlink" href="#a2a-agent-to-agent-protocol" title="Permanent link">&para;</a></h3>
+<p>Google's open standard for <strong>agents communicating with each other</strong> (complementary to MCP):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Protocol</th>
+<th style="text-align: left;">Purpose</th>
+<th style="text-align: left;">Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>MCP</strong></td>
+<td style="text-align: left;">AI ↔ Tools/Data</td>
+<td style="text-align: left;">Connect to external capabilities</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>A2A</strong></td>
+<td style="text-align: left;">Agent ↔ Agent</td>
+<td style="text-align: left;">Coordinate between autonomous agents</td>
+</tr>
+</tbody>
+</table>
+<p>MCP connects an agent to tools. A2A connects agents to each other. They're complementary:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Agent A (research)  ←─ A2A ─→  Agent B (writing)
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    │                               │
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    MCP                             MCP
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    │                               │
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a> Notion, Web                   Google Docs, Email
+</code></pre></div>
+<hr />
+<h2 id="5-memory-persistence-across-sessions">5. Memory — Persistence Across Sessions<a class="headerlink" href="#5-memory-persistence-across-sessions" title="Permanent link">&para;</a></h2>
+<p>Memory gives an AI the ability to <strong>remember</strong> across conversations, building context over time.</p>
+<h3 id="memory-types">Memory Types<a class="headerlink" href="#memory-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Scope</th>
+<th style="text-align: left;">Lifespan</th>
+<th style="text-align: left;">Mechanism</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Context Window</strong></td>
+<td style="text-align: left;">Single conversation</td>
+<td style="text-align: left;">Session</td>
+<td style="text-align: left;">Token buffer</td>
+<td style="text-align: left;">Chat history within current conversation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Short-term</strong></td>
+<td style="text-align: left;">Recent interactions</td>
+<td style="text-align: left;">Hours/days</td>
+<td style="text-align: left;">Summarisation</td>
+<td style="text-align: left;">"You mentioned you prefer Python yesterday"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Long-term</strong></td>
+<td style="text-align: left;">User profile + preferences</td>
+<td style="text-align: left;">Permanent</td>
+<td style="text-align: left;">Structured storage</td>
+<td style="text-align: left;">"User is a senior engineer who works with TypeScript"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Episodic</strong></td>
+<td style="text-align: left;">Specific past events</td>
+<td style="text-align: left;">Permanent</td>
+<td style="text-align: left;">Indexed logs</td>
+<td style="text-align: left;">"In our March conversation, we decided to use Supabase"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Semantic</strong></td>
+<td style="text-align: left;">Knowledge/facts</td>
+<td style="text-align: left;">Permanent</td>
+<td style="text-align: left;">Vector DB (RAG)</td>
+<td style="text-align: left;">Retrieved from embedded knowledge base</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation-patterns">Implementation Patterns<a class="headerlink" href="#implementation-patterns" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">System</th>
+<th style="text-align: left;">How It Works</th>
+<th style="text-align: left;">Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Knowledge Items (KIs)</strong></td>
+<td style="text-align: left;">Curated, distilled knowledge stored as artifacts</td>
+<td style="text-align: left;">High-value, reviewed information</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Conversation logs</strong></td>
+<td style="text-align: left;">Raw logs searchable by topic or recency</td>
+<td style="text-align: left;">Full history, audit trail</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vector memory</strong></td>
+<td style="text-align: left;">Embeddings of past interactions, retrieved by similarity</td>
+<td style="text-align: left;">"Remembering" relevant past context</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Structured profiles</strong></td>
+<td style="text-align: left;">JSON/YAML user preferences and context</td>
+<td style="text-align: left;">Persistent configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Summarisation chains</strong></td>
+<td style="text-align: left;">Compress old conversations into summaries</td>
+<td style="text-align: left;">Bounded storage, key insights</td>
+</tr>
+</tbody>
+</table>
+<h3 id="memory-management">Memory Management<a class="headerlink" href="#memory-management" title="Permanent link">&para;</a></h3>
+<p>The hard problem isn't storing memory — it's deciding <strong>what to remember and what to forget</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Every interaction
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    │
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    ├── Is this a fact I should remember? → Long-term memory
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    ├── Is this a preference/pattern? → User profile
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    ├── Is this a one-off detail? → Discard after session
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    └── Is this a key decision? → Episodic memory
+</code></pre></div>
+<blockquote>
+<p><strong>💡 The best memory systems are selective, not comprehensive.</strong> Storing everything creates noise. Curated memory (like Knowledge Items) consistently outperforms raw log retrieval.</p>
+</blockquote>
+<hr />
+<h2 id="6-rag-vs-fine-tuning-the-definitive-guide">6. RAG vs Fine-Tuning — The Definitive Guide<a class="headerlink" href="#6-rag-vs-fine-tuning-the-definitive-guide" title="Permanent link">&para;</a></h2>
+<p>This is the most common decision practitioners face. The answer depends on <strong>what kind of customisation you need</strong>:</p>
+<h3 id="decision-matrix">Decision Matrix<a class="headerlink" href="#decision-matrix" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;">RAG</th>
+<th style="text-align: left;">Fine-Tuning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Data changes frequently?</td>
+<td style="text-align: left;">✅ Update docs, instant effect</td>
+<td style="text-align: left;">❌ Must retrain</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need source citations?</td>
+<td style="text-align: left;">✅ Can point to retrieved chunks</td>
+<td style="text-align: left;">❌ Model doesn't cite sources</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need domain <em>language</em> (jargon, terminology)?</td>
+<td style="text-align: left;">⚠️ Partial (via context)</td>
+<td style="text-align: left;">✅ Model internalises domain language</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need domain <em>behaviour</em> (style, format)?</td>
+<td style="text-align: left;">❌ Can't change model behaviour</td>
+<td style="text-align: left;">✅ SFT teaches style and format</td>
+</tr>
+<tr>
+<td style="text-align: left;">Privacy-sensitive data?</td>
+<td style="text-align: left;">✅ Data stays in your infra</td>
+<td style="text-align: left;">⚠️ Data used in training (less control)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Budget is limited?</td>
+<td style="text-align: left;">✅ Infrastructure cost only</td>
+<td style="text-align: left;">⚠️ Training costs (GPU hours)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need to work tomorrow?</td>
+<td style="text-align: left;">✅ Hours to set up</td>
+<td style="text-align: left;">❌ Days/weeks to fine-tune</td>
+</tr>
+<tr>
+<td style="text-align: left;">Want best quality?</td>
+<td style="text-align: left;">⚠️ Limited by retrieval quality</td>
+<td style="text-align: left;">✅ Deeper knowledge integration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-hybrid-approach">The Hybrid Approach<a class="headerlink" href="#the-hybrid-approach" title="Permanent link">&para;</a></h3>
+<p>The best production systems combine both:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Fine-tune for EXPERTISE (permanent):
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  → Domain language, tone, format, reasoning patterns
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  → &quot;Be a legal assistant that writes in formal style&quot;
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>RAG for DATA (dynamic):
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  → Current cases, regulations, client documents
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>  → &quot;Here are the relevant statutes for this case&quot;
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>Together:
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>  → A model that speaks your domain&#39;s language AND has access to current data
+</code></pre></div>
+<h3 id="worked-examples">Worked Examples<a class="headerlink" href="#worked-examples" title="Permanent link">&para;</a></h3>
+<p><strong>"I want my AI to know our company policies"</strong>
+→ <strong>RAG.</strong> Policies change. Embed the policy docs, retrieve when relevant. No retraining needed when policies update.</p>
+<p><strong>"I want my AI to write in our brand voice"</strong>
+→ <strong>Fine-tune (SFT/LoRA).</strong> Brand voice is a behaviour, not data. Train on examples of your brand's writing style.</p>
+<p><strong>"I want my AI to understand medical terminology"</strong>
+→ <strong>CPT + Fine-tune.</strong> The model needs to deeply understand medical language (CPT) and follow clinical response formats (SFT).</p>
+<p><strong>"I want my AI to answer questions about today's news"</strong>
+→ <strong>RAG with web search.</strong> News changes hourly. RAG with a search tool gives real-time access.</p>
+<p><strong>"I want my AI to be a coding assistant for our proprietary framework"</strong>
+→ <strong>Both.</strong> Fine-tune on your framework's code (behaviour). RAG on your docs and API reference (data).</p>
+<hr />
+<h2 id="7-the-adaptability-advantage">7. The Adaptability Advantage<a class="headerlink" href="#7-the-adaptability-advantage" title="Permanent link">&para;</a></h2>
+<p>This is where most practitioners should invest their energy. The economics are compelling:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Layer</th>
+<th style="text-align: left;">Change Cost</th>
+<th style="text-align: left;">Change Speed</th>
+<th style="text-align: left;">Skill Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Foundation</td>
+<td style="text-align: left;">$5M–$100M</td>
+<td style="text-align: left;">Months</td>
+<td style="text-align: left;">PhD team, supercluster</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alignment</td>
+<td style="text-align: left;">$10–$50K</td>
+<td style="text-align: left;">Days–weeks</td>
+<td style="text-align: left;">ML engineer, multi-GPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Adaptability</strong></td>
+<td style="text-align: left;"><strong>$0–$1K</strong></td>
+<td style="text-align: left;"><strong>Hours</strong></td>
+<td style="text-align: left;"><strong>Any developer</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The foundation and alignment are done for you by labs and the open-source community. The adaptability layer is where <strong>you</strong> add value:</p>
+<ul>
+<li><strong>RAG</strong> — your private data becomes the model's knowledge</li>
+<li><strong>Agents</strong> — the model takes actions in your systems</li>
+<li><strong>MCP</strong> — universal connectors to your tools</li>
+<li><strong>Memory</strong> — the model remembers your context</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>The model itself changes slowly.
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>The context around it changes constantly.
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>That&#39;s where your competitive advantage lives.
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.instant", "search.suggest", "search.highlight", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

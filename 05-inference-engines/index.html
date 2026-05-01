@@ -1,0 +1,1318 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for AI architectures, tools, and foundations.">
+      
+      
+      
+        <link rel="canonical" href="https://jaojbls.github.io/ai-landscape/05-inference-engines/">
+      
+      
+        <link rel="prev" href="../04-model-formats/">
+      
+      
+        <link rel="next" href="../06-tools/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>L5 Inference Engines - AI Landscape</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inference-engines" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Landscape" class="md-header__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Landscape
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              L5 Inference Engines
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Landscape" class="md-nav__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Landscape
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🥞 AI Stack Layers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🥞 AI Stack Layers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-model-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L1 Model Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-training-adaptation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 Training & Adaptation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3 Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-model-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L4 Model Formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5 Inference Engines
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5 Inference Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-an-inference-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What Is an Inference Engine?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-local-inference-engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Local Inference Engines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Local Inference Engines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llamacpp-the-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llama.cpp — The Foundation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mlx-apples-research-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MLX — Apple's Research Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exllamav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExLlamaV2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitnetcpp-158-bit-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bitnet.cpp — 1.58-Bit Inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-server-cloud-engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Server / Cloud Engines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Server / Cloud Engines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vllm-the-high-throughput-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vLLM — The High-Throughput Standard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sglang-structured-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SGLang — Structured Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tgi-text-generation-inference-hugging-faces-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TGI (Text Generation Inference) — Hugging Face's Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorrt-llm-nvidias-performance-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TensorRT-LLM — NVIDIA's Performance Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triton-inference-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Triton Inference Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cross-platform-engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cross-Platform Engines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Cross-Platform Engines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onnx-runtime-the-universal-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ONNX Runtime — The Universal Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-edge-mobile-runtimes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Edge / Mobile Runtimes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-engine-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Engine Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-engine-tool-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Engine → Tool Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Selection Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6 Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-llm-extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L7 LLM Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌱 Living Stack Tiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🌱 Living Stack Tiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L1-foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 Foundation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L2-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L3-adaptability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 Adaptability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="inference-engines">Inference Engines<a class="headerlink" href="#inference-engines" title="Permanent link">&para;</a></h1>
+<h2 id="1-what-is-an-inference-engine">1. What Is an Inference Engine?<a class="headerlink" href="#1-what-is-an-inference-engine" title="Permanent link">&para;</a></h2>
+<p>An inference engine is the <strong>software that loads a model and runs it</strong> — feeding in prompts, computing token predictions, and returning responses. It's the layer between the model file on disk and the user-facing tool you interact with.</p>
+<p><strong>Key distinction:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Inference Engine (runs the model)     User-Facing Tool (you interact with)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>─────────────────────────────────     ────────────────────────────────────
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>llama.cpp                        ←── Ollama, LM Studio, GPT4All
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>vLLM                             ←── API server, Open WebUI
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>CoreML Runtime                   ←── iOS/macOS apps
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>TensorRT-LLM                    ←── NVIDIA Triton, cloud APIs
+</code></pre></div></p>
+<p>Understanding this separation helps you make better deployment decisions — the engine determines <strong>performance</strong>, the tool determines <strong>experience</strong>.</p>
+<hr />
+<h2 id="2-local-inference-engines">2. Local Inference Engines<a class="headerlink" href="#2-local-inference-engines" title="Permanent link">&para;</a></h2>
+<h3 id="llamacpp-the-foundation">llama.cpp — The Foundation<a class="headerlink" href="#llamacpp-the-foundation" title="Permanent link">&para;</a></h3>
+<p>The most important inference engine in the local AI ecosystem. Written in C/C++, it's what powers Ollama, LM Studio, and most local AI tools.</p>
+<p><strong>Key features:</strong>
+- <strong>CPU-first design</strong> — runs on any machine, no GPU required
+- <strong>GPU offloading</strong> — can offload layers to NVIDIA (CUDA), AMD (ROCm), or Apple (Metal)
+- <strong>GGUF format</strong> — the native format, with built-in quantisation support
+- <strong>Minimal dependencies</strong> — single binary, no Python/PyTorch needed
+- <strong>OpenAI-compatible server</strong> — built-in HTTP server mode</p>
+<p><strong>Why it matters:</strong> If you're running a model locally on consumer hardware, llama.cpp (or something built on it) is almost certainly doing the work.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Direct usage (most people use Ollama instead)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>./llama-server<span class="w"> </span>-m<span class="w"> </span>model.gguf<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span>
+</code></pre></div>
+<hr />
+<h3 id="mlx-apples-research-engine">MLX — Apple's Research Engine<a class="headerlink" href="#mlx-apples-research-engine" title="Permanent link">&para;</a></h3>
+<p>Apple's own ML framework, designed specifically for Apple Silicon:</p>
+<ul>
+<li><strong>Python-native</strong> — feels like PyTorch but optimised for M-series chips</li>
+<li><strong>Lazy evaluation</strong> — computations only run when results are needed</li>
+<li><strong>Unified memory aware</strong> — takes full advantage of UMA</li>
+<li><strong>Growing model support</strong> — Hugging Face has an <code>mlx-community</code> with converted models</li>
+</ul>
+<p><strong>Best for:</strong> ML researchers on Mac who want a PyTorch-like experience without the overhead. Not yet mainstream for end-user inference (llama.cpp is faster for GGUF).</p>
+<hr />
+<h3 id="exllamav2">ExLlamaV2<a class="headerlink" href="#exllamav2" title="Permanent link">&para;</a></h3>
+<p>Specialised engine for <strong>GPU inference with EXL2 quantised models</strong>:</p>
+<ul>
+<li><strong>Fastest GPTQ/EXL2 inference</strong> available</li>
+<li>GPU-only (no CPU support)</li>
+<li>Variable quantisation per layer (e.g., important layers at 6-bit, less important at 3-bit)</li>
+<li>Popular in the r/LocalLLaMA community</li>
+</ul>
+<hr />
+<h3 id="bitnetcpp-158-bit-inference">bitnet.cpp — 1.58-Bit Inference<a class="headerlink" href="#bitnetcpp-158-bit-inference" title="Permanent link">&para;</a></h3>
+<p>Microsoft's inference engine purpose-built for <strong>BitNet b1.58 ternary models</strong> (see <a href="../01-model-architectures/">01-model-architectures.md</a>):</p>
+<ul>
+<li><strong>Addition-only compute</strong> — no floating-point multiplication needed</li>
+<li><strong>CPU-native</strong> — designed to run efficiently without any GPU</li>
+<li><strong>Dramatically lower energy</strong> — potential for LLMs on battery-powered devices</li>
+<li><strong>Research stage</strong> — pairs exclusively with BitNet b1.58 models</li>
+</ul>
+<p><strong>Why it's different:</strong> Every other engine on this page runs standard float/int models. bitnet.cpp runs ternary {-1, 0, 1} models where inference is pure addition.</p>
+<hr />
+<h2 id="3-server-cloud-engines">3. Server / Cloud Engines<a class="headerlink" href="#3-server-cloud-engines" title="Permanent link">&para;</a></h2>
+<h3 id="vllm-the-high-throughput-standard">vLLM — The High-Throughput Standard<a class="headerlink" href="#vllm-the-high-throughput-standard" title="Permanent link">&para;</a></h3>
+<p>The go-to engine for serving LLMs at scale in production.</p>
+<p><strong>Key innovation — PagedAttention:</strong>
+- Traditional inference wastes memory by pre-allocating KV cache for the maximum sequence length
+- vLLM manages KV cache like virtual memory pages — allocates on demand
+- Result: <strong>2–4x higher throughput</strong> than naive serving</p>
+<p><strong>Features:</strong>
+- OpenAI-compatible API
+- Continuous batching (serves multiple requests simultaneously)
+- Supports NVIDIA, AMD, and TPU
+- Native support for SafeTensors, GPTQ, AWQ models</p>
+<p><strong>Best for:</strong> Production API servers handling many concurrent users.</p>
+<hr />
+<h3 id="sglang-structured-generation">SGLang — Structured Generation<a class="headerlink" href="#sglang-structured-generation" title="Permanent link">&para;</a></h3>
+<p>Optimised for structured outputs (JSON, function calling, constrained generation):</p>
+<ul>
+<li><strong>RadixAttention</strong> — caches and reuses common prompt prefixes across requests</li>
+<li>Excellent for agentic workloads where many requests share similar system prompts</li>
+<li>Competitive throughput with vLLM, sometimes faster for structured tasks</li>
+</ul>
+<hr />
+<h3 id="tgi-text-generation-inference-hugging-faces-engine">TGI (Text Generation Inference) — Hugging Face's Engine<a class="headerlink" href="#tgi-text-generation-inference-hugging-faces-engine" title="Permanent link">&para;</a></h3>
+<p>Hugging Face's production inference server:</p>
+<ul>
+<li>Tight integration with the Hugging Face ecosystem</li>
+<li>Supports tensor parallelism (split model across multiple GPUs)</li>
+<li>Flash Attention for faster inference</li>
+<li>Production-ready with built-in health checks and metrics</li>
+</ul>
+<hr />
+<h3 id="tensorrt-llm-nvidias-performance-engine">TensorRT-LLM — NVIDIA's Performance Engine<a class="headerlink" href="#tensorrt-llm-nvidias-performance-engine" title="Permanent link">&para;</a></h3>
+<p>NVIDIA's inference engine for maximum performance on NVIDIA hardware:</p>
+<ul>
+<li>Uses TensorRT optimisations (layer fusion, kernel auto-tuning)</li>
+<li>Inflight batching for high throughput</li>
+<li>FP8 quantisation support on Hopper GPUs (H100+)</li>
+<li><strong>Best for:</strong> Maximum tokens/second on NVIDIA GPUs, enterprise deployments</li>
+</ul>
+<hr />
+<h3 id="triton-inference-server">Triton Inference Server<a class="headerlink" href="#triton-inference-server" title="Permanent link">&para;</a></h3>
+<p>NVIDIA's model-serving platform — a layer above TensorRT-LLM:</p>
+<ul>
+<li>Serves multiple models simultaneously</li>
+<li>Dynamic batching across model types</li>
+<li>Supports multiple backends (TensorRT, ONNX, PyTorch)</li>
+<li>Enterprise-grade monitoring and scaling</li>
+</ul>
+<hr />
+<h2 id="4-cross-platform-engines">4. Cross-Platform Engines<a class="headerlink" href="#4-cross-platform-engines" title="Permanent link">&para;</a></h2>
+<h3 id="onnx-runtime-the-universal-engine">ONNX Runtime — The Universal Engine<a class="headerlink" href="#onnx-runtime-the-universal-engine" title="Permanent link">&para;</a></h3>
+<p>Microsoft's cross-platform inference runtime. Unlike other engines that target a specific niche (llama.cpp → local LLMs, vLLM → GPU servers), ONNX Runtime runs <strong>everywhere</strong>:</p>
+<ul>
+<li><strong>Built into Windows</strong> — powers Windows ML and DirectML GPU acceleration</li>
+<li><strong>Azure ML</strong> — default inference backend for Azure-deployed models</li>
+<li><strong>Hugging Face Optimum</strong> — accelerated inference via ONNX Runtime backend</li>
+<li><strong>Browser inference</strong> — ONNX Runtime Web runs models in-browser via WebAssembly/WebGPU</li>
+<li><strong>Widest language support</strong> — C++, C#, Java, Python, JavaScript, Swift</li>
+<li><strong>Hardware agnostic</strong> — CPU, NVIDIA GPU, AMD GPU, Intel NPU, Qualcomm NPU, Apple CoreML</li>
+</ul>
+<p><strong>Why it's less visible in the LLM space:</strong> ONNX Runtime dominates traditional ML (classification, object detection, NLP) and smaller transformer models. For 70B+ LLM inference, llama.cpp and vLLM are more optimised. But for cross-platform deployment of smaller models, nothing matches ONNX Runtime's reach.</p>
+<blockquote>
+<p><strong>💡 Key insight:</strong> ONNX Runtime is probably the most widely <em>deployed</em> inference engine in the world (it ships with every Windows installation), but the least talked about in LLM circles because LLM developers gravitate toward specialised engines.</p>
+</blockquote>
+<hr />
+<h2 id="5-edge-mobile-runtimes">5. Edge / Mobile Runtimes<a class="headerlink" href="#5-edge-mobile-runtimes" title="Permanent link">&para;</a></h2>
+<p>These execute small, optimised models on devices with limited compute:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Runtime</th>
+<th style="text-align: left;">Vendor</th>
+<th style="text-align: left;">Target</th>
+<th style="text-align: left;">Executes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CoreML Runtime</strong></td>
+<td style="text-align: left;">Apple</td>
+<td style="text-align: left;">iPhone, iPad, Mac</td>
+<td style="text-align: left;">CoreML models using Neural Engine + GPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TFLite Runtime</strong></td>
+<td style="text-align: left;">Google</td>
+<td style="text-align: left;">Android, embedded</td>
+<td style="text-align: left;">TFLite models on CPU, GPU, NPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QNN Runtime</strong></td>
+<td style="text-align: left;">Qualcomm</td>
+<td style="text-align: left;">Snapdragon devices</td>
+<td style="text-align: left;">QNN models on Hexagon DSP</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Common pattern:</strong> Voice assistants, on-device translation, photo enhancement, real-time camera effects.</p>
+<hr />
+<h2 id="6-engine-comparison">6. Engine Comparison<a class="headerlink" href="#6-engine-comparison" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Engine</th>
+<th style="text-align: left;">Target</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Throughput</th>
+<th style="text-align: left;">Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>llama.cpp</strong></td>
+<td style="text-align: left;">Local (CPU/GPU)</td>
+<td style="text-align: left;">Personal use, prototyping</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Low</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ExLlamaV2</strong></td>
+<td style="text-align: left;">Local (GPU)</td>
+<td style="text-align: left;">GPU power users, EXL2 models</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MLX</strong></td>
+<td style="text-align: left;">Local (Apple)</td>
+<td style="text-align: left;">Mac ML research</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Low</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>vLLM</strong></td>
+<td style="text-align: left;">Server</td>
+<td style="text-align: left;">Production APIs, high concurrency</td>
+<td style="text-align: left;">Very High</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SGLang</strong></td>
+<td style="text-align: left;">Server</td>
+<td style="text-align: left;">Structured/agentic workloads</td>
+<td style="text-align: left;">Very High</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TGI</strong></td>
+<td style="text-align: left;">Server</td>
+<td style="text-align: left;">HF ecosystem production</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TensorRT-LLM</strong></td>
+<td style="text-align: left;">Server (NVIDIA)</td>
+<td style="text-align: left;">Maximum NVIDIA performance</td>
+<td style="text-align: left;">Highest</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Triton</strong></td>
+<td style="text-align: left;">Server (NVIDIA)</td>
+<td style="text-align: left;">Multi-model enterprise serving</td>
+<td style="text-align: left;">Highest</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ONNX Runtime</strong></td>
+<td style="text-align: left;">Cross-platform</td>
+<td style="text-align: left;">Windows ML, Azure, multi-language apps</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Low–Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoreML/TFLite/QNN</strong></td>
+<td style="text-align: left;">Edge</td>
+<td style="text-align: left;">On-device mobile/IoT</td>
+<td style="text-align: left;">Low–Medium</td>
+<td style="text-align: left;">High (conversion)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>bitnet.cpp</strong></td>
+<td style="text-align: left;">Local (CPU)</td>
+<td style="text-align: left;">1.58-bit ternary models</td>
+<td style="text-align: left;">Research</td>
+<td style="text-align: left;">Low</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-engine-tool-mapping">7. Engine → Tool Mapping<a class="headerlink" href="#7-engine-tool-mapping" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Engine (runs the model)</th>
+<th style="text-align: left;">Tools Built On It (you use these)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>llama.cpp</strong></td>
+<td style="text-align: left;">Ollama, LM Studio, GPT4All, Jan, koboldcpp</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>vLLM</strong></td>
+<td style="text-align: left;">Open WebUI (API backend), custom API servers</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TGI</strong></td>
+<td style="text-align: left;">Hugging Face Inference Endpoints</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TensorRT-LLM</strong></td>
+<td style="text-align: left;">NVIDIA NIM containers, Triton</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ONNX Runtime</strong></td>
+<td style="text-align: left;">Windows ML, Azure ML, HF Optimum, browser apps, DirectML</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoreML Runtime</strong></td>
+<td style="text-align: left;">iOS/macOS apps (Siri, on-device features)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>bitnet.cpp</strong></td>
+<td style="text-align: left;">BitNet b1.58 research, proof-of-concept</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 Key insight:</strong> When someone says "Ollama is fast," they really mean "llama.cpp is fast." Ollama is the user-friendly wrapper; llama.cpp is the engine doing the actual computation.</p>
+</blockquote>
+<hr />
+<h2 id="8-selection-guide">8. Selection Guide<a class="headerlink" href="#8-selection-guide" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>What&#39;s your situation?
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── Running locally on your machine?
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   ├── Any hardware → llama.cpp (via Ollama)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│   ├── NVIDIA GPU + EXL2 models → ExLlamaV2
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│   ├── Mac + ML research → MLX
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│   └── 1.58-bit ternary models → bitnet.cpp (research)
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>├── Serving an API to users?
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│   ├── General purpose, high throughput → vLLM
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│   ├── Structured outputs / agents → SGLang
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│   ├── HF ecosystem → TGI
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│   └── NVIDIA enterprise, max speed → TensorRT-LLM
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>│
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>├── Cross-platform / multi-language app?
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>│   └── ONNX Runtime (any OS, any hardware, any language)
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>│       ├── Windows desktop → DirectML backend
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│       ├── Azure cloud → Azure ML integration
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>│       ├── Browser → ONNX Runtime Web (WebAssembly/WebGPU)
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>│       └── HF models → Optimum + ONNX Runtime
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>│
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>└── On-device / mobile?
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    ├── Apple → CoreML Runtime
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    ├── Android → TFLite Runtime
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    └── Qualcomm → QNN Runtime
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.instant", "search.suggest", "search.highlight", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

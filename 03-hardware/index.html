@@ -1,0 +1,1295 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for AI architectures, tools, and foundations.">
+      
+      
+      
+        <link rel="canonical" href="https://jaojbls.github.io/ai-landscape/03-hardware/">
+      
+      
+        <link rel="prev" href="../02-training-adaptation/">
+      
+      
+        <link rel="next" href="../04-model-formats/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>L3 Hardware - AI Landscape</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#processing-hardware" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Landscape" class="md-header__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Landscape
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              L3 Hardware
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Landscape" class="md-nav__button md-logo" aria-label="AI Landscape" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Landscape
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🥞 AI Stack Layers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🥞 AI Stack Layers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-model-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L1 Model Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-training-adaptation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 Training & Adaptation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3 Hardware
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3 Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-hardware-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why Hardware Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-processor-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Processor Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Processor Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        At a Glance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-the-universal-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU — The Universal Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-the-workhorse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU — The Workhorse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tpu-googles-custom-silicon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TPU — Google's Custom Silicon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lpu-groqs-language-processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LPU — Groq's Language Processor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npu-neural-processing-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPU — Neural Processing Units
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apple-silicon-the-unified-memory-advantage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apple Silicon — The Unified Memory Advantage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asic-inference-chips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ASIC Inference Chips
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analog-ai-the-frontier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analog AI — The Frontier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-hardware-decision-flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Hardware Decision Flowchart
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-model-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L4 Model Formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-inference-engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5 Inference Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6 Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-llm-extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L7 LLM Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌱 Living Stack Tiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🌱 Living Stack Tiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L1-foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 Foundation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L2-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L3-adaptability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 Adaptability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="processing-hardware">Processing Hardware<a class="headerlink" href="#processing-hardware" title="Permanent link">&para;</a></h1>
+<h2 id="1-why-hardware-matters">1. Why Hardware Matters<a class="headerlink" href="#1-why-hardware-matters" title="Permanent link">&para;</a></h2>
+<p>AI workloads are fundamentally different from traditional computing. They're dominated by <strong>matrix multiplication</strong> — billions of multiply-and-accumulate operations — which is why specialised processors exist.</p>
+<p>The hardware you choose determines:
+- <strong>What models you can run</strong> (a 70B model needs ~40 GB of memory)
+- <strong>How fast they run</strong> (tokens per second)
+- <strong>What it costs</strong> (cloud GPU vs local inference)</p>
+<hr />
+<h2 id="2-processor-types">2. Processor Types<a class="headerlink" href="#2-processor-types" title="Permanent link">&para;</a></h2>
+<h3 id="at-a-glance">At a Glance<a class="headerlink" href="#at-a-glance" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Processor</th>
+<th style="text-align: left;">Full Name</th>
+<th style="text-align: left;">Role</th>
+<th style="text-align: left;">Vendor(s)</th>
+<th style="text-align: left;">Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CPU</strong></td>
+<td style="text-align: left;">Central Processing Unit</td>
+<td style="text-align: left;">General compute + inference</td>
+<td style="text-align: left;">Intel, AMD, Apple, ARM</td>
+<td style="text-align: left;">GGUF inference (no GPU), lightweight models</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GPU</strong></td>
+<td style="text-align: left;">Graphics Processing Unit</td>
+<td style="text-align: left;">Training + inference</td>
+<td style="text-align: left;">NVIDIA, AMD, Intel</td>
+<td style="text-align: left;">Cloud training, batch inference, heavy workloads</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TPU</strong></td>
+<td style="text-align: left;">Tensor Processing Unit</td>
+<td style="text-align: left;">Cloud ML at scale</td>
+<td style="text-align: left;">Google</td>
+<td style="text-align: left;">Google Cloud AI, large-scale training</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LPU</strong></td>
+<td style="text-align: left;">Language Processing Unit</td>
+<td style="text-align: left;">Ultra-fast LLM inference</td>
+<td style="text-align: left;">Groq</td>
+<td style="text-align: left;">Real-time chatbots, lowest latency</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NPU</strong></td>
+<td style="text-align: left;">Neural Processing Unit</td>
+<td style="text-align: left;">On-device AI</td>
+<td style="text-align: left;">Qualcomm, Intel, Apple, MediaTek</td>
+<td style="text-align: left;">Phones, laptops, IoT, edge devices</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Apple Silicon</strong></td>
+<td style="text-align: left;">M-series SoC (UMA)</td>
+<td style="text-align: left;">Local inference</td>
+<td style="text-align: left;">Apple</td>
+<td style="text-align: left;">MacBook/Mac Studio local AI</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ASIC</strong></td>
+<td style="text-align: left;">Application-Specific IC</td>
+<td style="text-align: left;">Specialised cloud inference</td>
+<td style="text-align: left;">AWS (Inferentia/Trainium), Cerebras</td>
+<td style="text-align: left;">Cloud inference at scale</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Analog AI</strong></td>
+<td style="text-align: left;">Analog compute-in-memory</td>
+<td style="text-align: left;">Ultra-low power edge</td>
+<td style="text-align: left;">Mythic</td>
+<td style="text-align: left;">Robotics, defense, extreme edge</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="cpu-the-universal-fallback">CPU — The Universal Fallback<a class="headerlink" href="#cpu-the-universal-fallback" title="Permanent link">&para;</a></h3>
+<p>CPUs are <strong>not optimal</strong> for AI, but they're <strong>everywhere</strong> and increasingly capable for inference:</p>
+<ul>
+<li><strong>GGUF models run well on CPU</strong> — llama.cpp was designed for CPU-first inference</li>
+<li>Modern CPUs with AVX-512 or AMX instructions handle matrix ops reasonably well</li>
+<li><strong>When to use:</strong> No GPU available, small models (≤13B), or as a fallback</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Vendor</th>
+<th style="text-align: left;">AI-Relevant Tech</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Intel</td>
+<td style="text-align: left;">AMX (Advanced Matrix Extensions), NPU in Core Ultra</td>
+</tr>
+<tr>
+<td style="text-align: left;">AMD</td>
+<td style="text-align: left;">AVX-512, XDNA NPU in Ryzen AI</td>
+</tr>
+<tr>
+<td style="text-align: left;">Apple</td>
+<td style="text-align: left;">Accelerate framework, built-in ML compute</td>
+</tr>
+<tr>
+<td style="text-align: left;">ARM</td>
+<td style="text-align: left;">SVE2, Neoverse for server inference</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="gpu-the-workhorse">GPU — The Workhorse<a class="headerlink" href="#gpu-the-workhorse" title="Permanent link">&para;</a></h3>
+<p>GPUs are the <strong>primary hardware for both training and inference</strong>. Their massive parallelism (thousands of cores) is ideal for matrix multiplication.</p>
+<h4 id="nvidia-the-dominant-force">NVIDIA — The Dominant Force<a class="headerlink" href="#nvidia-the-dominant-force" title="Permanent link">&para;</a></h4>
+<p>NVIDIA controls ~80%+ of the AI GPU market. Key product lines:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tier</th>
+<th style="text-align: left;">Products</th>
+<th style="text-align: left;">VRAM</th>
+<th style="text-align: left;">Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Consumer</strong></td>
+<td style="text-align: left;">RTX 4090, RTX 5090</td>
+<td style="text-align: left;">24 GB</td>
+<td style="text-align: left;">Local inference, LoRA fine-tuning</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Prosumer</strong></td>
+<td style="text-align: left;">RTX 6000 Ada</td>
+<td style="text-align: left;">48 GB</td>
+<td style="text-align: left;">Larger models, professional workloads</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data Centre</strong></td>
+<td style="text-align: left;">A100, H100, H200, B200</td>
+<td style="text-align: left;">40–192 GB</td>
+<td style="text-align: left;">Training, production inference</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Next-Gen</strong></td>
+<td style="text-align: left;">GB200 (Grace Blackwell)</td>
+<td style="text-align: left;">192 GB HBM3e</td>
+<td style="text-align: left;">Frontier training</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key NVIDIA technologies:</strong>
+- <strong>CUDA</strong> — The programming model everything is built on
+- <strong>Tensor Cores</strong> — Dedicated matrix multiplication hardware
+- <strong>NVLink</strong> — High-speed GPU-to-GPU interconnect for multi-GPU setups
+- <strong>TensorRT</strong> — Optimised inference engine</p>
+<h4 id="amd-the-challenger">AMD — The Challenger<a class="headerlink" href="#amd-the-challenger" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tier</th>
+<th style="text-align: left;">Products</th>
+<th style="text-align: left;">VRAM</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Consumer</strong></td>
+<td style="text-align: left;">RX 7900 XTX</td>
+<td style="text-align: left;">24 GB</td>
+<td style="text-align: left;">ROCm support improving</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data Centre</strong></td>
+<td style="text-align: left;">MI300X</td>
+<td style="text-align: left;">192 GB HBM3</td>
+<td style="text-align: left;">Competitive with H100</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Advantage</strong></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Often cheaper per GB of VRAM</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Limitation:</strong> Software ecosystem (ROCm) is less mature than CUDA. Not all frameworks have first-class AMD support.</p>
+<h4 id="intel-arc">Intel Arc<a class="headerlink" href="#intel-arc" title="Permanent link">&para;</a></h4>
+<p>Intel is entering the discrete GPU space with Arc. AI support via oneAPI is emerging but not yet competitive for serious AI workloads.</p>
+<hr />
+<h3 id="tpu-googles-custom-silicon">TPU — Google's Custom Silicon<a class="headerlink" href="#tpu-googles-custom-silicon" title="Permanent link">&para;</a></h3>
+<p>Google's Tensor Processing Units are <strong>cloud-only</strong> processors designed specifically for ML workloads.</p>
+<ul>
+<li>Available exclusively through <strong>Google Cloud</strong></li>
+<li>Optimised for large-scale training and inference</li>
+<li>Used internally by Google for Gemini, Search, YouTube recommendations</li>
+<li>TPU v5e and v5p are the current generation</li>
+<li><strong>Best for:</strong> Teams already in the Google Cloud ecosystem</li>
+</ul>
+<hr />
+<h3 id="lpu-groqs-language-processor">LPU — Groq's Language Processor<a class="headerlink" href="#lpu-groqs-language-processor" title="Permanent link">&para;</a></h3>
+<p>Groq's Language Processing Unit takes a radically different approach: <strong>deterministic, no-cache architecture</strong> optimised specifically for sequential token generation.</p>
+<ul>
+<li><strong>Record-breaking speed:</strong> 500+ tokens/second for Llama 70B</li>
+<li><strong>Deterministic latency:</strong> Every token takes the same time (no variance)</li>
+<li><strong>Cloud API only:</strong> No hardware for purchase — access via Groq Cloud</li>
+<li><strong>Trade-off:</strong> Optimised for inference only (not training), limited batch sizes</li>
+</ul>
+<hr />
+<h3 id="npu-neural-processing-units">NPU — Neural Processing Units<a class="headerlink" href="#npu-neural-processing-units" title="Permanent link">&para;</a></h3>
+<p>Dedicated low-power AI accelerators built <strong>into consumer chips</strong>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Vendor</th>
+<th style="text-align: left;">NPU</th>
+<th style="text-align: left;">Found In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Qualcomm</td>
+<td style="text-align: left;">Hexagon</td>
+<td style="text-align: left;">Snapdragon phones, Windows ARM laptops</td>
+</tr>
+<tr>
+<td style="text-align: left;">Intel</td>
+<td style="text-align: left;">AI Boost</td>
+<td style="text-align: left;">Core Ultra laptops</td>
+</tr>
+<tr>
+<td style="text-align: left;">Apple</td>
+<td style="text-align: left;">Neural Engine</td>
+<td style="text-align: left;">iPhones, iPads, Macs (16–38 TOPS)</td>
+</tr>
+<tr>
+<td style="text-align: left;">MediaTek</td>
+<td style="text-align: left;">APU</td>
+<td style="text-align: left;">Android phones</td>
+</tr>
+<tr>
+<td style="text-align: left;">AMD</td>
+<td style="text-align: left;">XDNA</td>
+<td style="text-align: left;">Ryzen AI laptops</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What NPUs do:</strong> Handle lightweight AI tasks (voice recognition, photo enhancement, real-time translation) locally without draining the battery.</p>
+<p><strong>What NPUs don't do:</strong> Run large LLMs. They're designed for small, optimised models (via CoreML, TFLite, QNN formats).</p>
+<hr />
+<h3 id="apple-silicon-the-unified-memory-advantage">Apple Silicon — The Unified Memory Advantage<a class="headerlink" href="#apple-silicon-the-unified-memory-advantage" title="Permanent link">&para;</a></h3>
+<p>Apple's M-series chips deserve special attention because of <strong>Unified Memory Architecture (UMA)</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Traditional (discrete GPU):          Apple Silicon (UMA):
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>┌─────────┐    ┌─────────┐          ┌─────────────────────┐
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   CPU   │◄──►│   GPU   │          │  CPU + GPU + NPU    │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  RAM    │    │  VRAM   │          │  Shared Memory Pool  │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│ (64 GB) │    │ (24 GB) │          │  (up to 512 GB)     │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└─────────┘    └─────────┘          └─────────────────────┘
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  Model must fit in VRAM (24 GB)      Model can use ALL memory
+</code></pre></div>
+<p><strong>Why this matters for AI:</strong>
+- A Mac Studio with 192 GB can run a 70B model in GGUF Q4_K_M entirely in memory
+- No GPU VRAM bottleneck — the model uses the full unified memory pool
+- Metal framework provides GPU acceleration for inference</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Chip</th>
+<th style="text-align: left;">Max Memory</th>
+<th style="text-align: left;">Memory Bandwidth</th>
+<th style="text-align: left;">Ideal Model Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">M4</td>
+<td style="text-align: left;">32 GB</td>
+<td style="text-align: left;">120 GB/s</td>
+<td style="text-align: left;">Up to ~14B Q4</td>
+</tr>
+<tr>
+<td style="text-align: left;">M4 Pro</td>
+<td style="text-align: left;">48 GB</td>
+<td style="text-align: left;">273 GB/s</td>
+<td style="text-align: left;">Up to ~30B Q4</td>
+</tr>
+<tr>
+<td style="text-align: left;">M4 Max</td>
+<td style="text-align: left;">128 GB</td>
+<td style="text-align: left;">546 GB/s</td>
+<td style="text-align: left;">Up to ~70B Q4</td>
+</tr>
+<tr>
+<td style="text-align: left;">M4 Ultra</td>
+<td style="text-align: left;">512 GB</td>
+<td style="text-align: left;">819 GB/s</td>
+<td style="text-align: left;">70B+ full precision</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>⚠️ Performance is memory-bandwidth bound</strong>, not memory-size bound. An M4 Max with 128 GB will run a 70B model <strong>faster</strong> than an M4 with 32 GB (even ignoring the size), because bandwidth determines tokens-per-second.</p>
+</blockquote>
+<hr />
+<h3 id="asic-inference-chips">ASIC Inference Chips<a class="headerlink" href="#asic-inference-chips" title="Permanent link">&para;</a></h3>
+<p>Purpose-built chips for cloud inference at scale:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Chip</th>
+<th style="text-align: left;">Vendor</th>
+<th style="text-align: left;">Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Inferentia2</strong></td>
+<td style="text-align: left;">AWS</td>
+<td style="text-align: left;">Cost-efficient inference on AWS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trainium2</strong></td>
+<td style="text-align: left;">AWS</td>
+<td style="text-align: left;">Training on AWS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cerebras WSE-3</strong></td>
+<td style="text-align: left;">Cerebras</td>
+<td style="text-align: left;">Wafer-scale, massive single-chip models</td>
+</tr>
+</tbody>
+</table>
+<p>These are cloud-only and managed by the vendor — you use them via cloud APIs, not directly.</p>
+<hr />
+<h3 id="analog-ai-the-frontier">Analog AI — The Frontier<a class="headerlink" href="#analog-ai-the-frontier" title="Permanent link">&para;</a></h3>
+<p>Mythic's approach: perform matrix multiplication <strong>in the analog domain</strong> using flash memory cells as resistors.</p>
+<ul>
+<li><strong>Extreme efficiency:</strong> ~10x more power-efficient than digital for inference</li>
+<li><strong>Trade-off:</strong> Lower precision, harder to program</li>
+<li><strong>Status:</strong> Niche — primarily defense and edge robotics applications</li>
+<li><strong>Why it matters:</strong> Points toward a future where AI inference is nearly free at the edge</li>
+</ul>
+<hr />
+<h2 id="3-hardware-decision-flowchart">3. Hardware Decision Flowchart<a class="headerlink" href="#3-hardware-decision-flowchart" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>What are you doing?
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── Training a model?
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   └── GPU (NVIDIA H100/B200) or Cloud TPU
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── Running inference?
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── Cloud / high throughput?
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   │   ├── Lowest latency? → LPU (Groq)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   │   ├── NVIDIA ecosystem? → GPU + TensorRT
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   │   └── AWS? → Inferentia2
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   │
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   ├── Local machine?
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   │   ├── macOS? → Apple Silicon (GGUF + Metal)
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│   │   ├── Linux/Windows with NVIDIA? → GPU (GGUF + CUDA)
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│   │   └── No GPU? → CPU (GGUF via llama.cpp)
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   │
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   └── Edge / IoT?
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│       ├── Phone? → NPU (CoreML / TFLite / QNN)
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│       └── Ultra-low power? → Analog AI
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>└── Fine-tuning?
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    ├── LoRA/QLoRA? → Single GPU (RTX 4090, 24 GB)
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    └── Full fine-tune? → Multi-GPU (A100/H100 cluster)
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.instant", "search.suggest", "search.highlight", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
