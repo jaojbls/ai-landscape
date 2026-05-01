@@ -1,0 +1,49 @@
+site_name: AI Landscape
+site_description: Documentation for AI architectures, tools, and foundations.
+site_url: https://jaojbls.github.io/ai-landscape/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+
+nav:
+  - Home: index.md
+  - Foundations:
+    - L1 Foundation: L1-foundation.md
+    - L2 Alignment: L2-alignment.md
+    - L3 Adaptability: L3-adaptability.md
+  - Components:
+    - Model Architectures: 01-model-architectures.md
+    - Training & Adaptation: 02-training-adaptation.md
+    - Hardware: 03-hardware.md
+    - Model Formats: 04-model-formats.md
+    - Inference Engines: 05-inference-engines.md
+    - Tools: 06-tools.md
+    - LLM Extensions: 07-llm-extensions.md
