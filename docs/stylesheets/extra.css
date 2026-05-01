@@ -44,3 +44,23 @@
   margin-top: 1rem;
   margin-bottom: 1.5rem;
 }
+
+/* ==========================================================================
+   LEFT SIDEBAR / TOC STYLING
+   ========================================================================== */
+
+/* Target only the nested Table of Contents links (which always have a hash #) */
+.md-nav__link[href*="#"] {
+  font-size: 0.75rem !important;        /* Smaller font */
+  line-height: 1.2 !important;
+  padding-top: 0.25rem !important;      /* Tighter vertical spacing */
+  padding-bottom: 0.25rem !important;
+  color: var(--md-default-fg-color--light) !important; /* Softer color */
+}
+
+/* Highlight the active/hovered section in the TOC */
+.md-nav__link[href*="#"]:hover,
+.md-nav__link[href*="#"].md-nav__link--active {
+  color: var(--md-primary-color) !important;
+  font-weight: 600 !important;
+}

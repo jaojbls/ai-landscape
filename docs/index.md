@@ -226,27 +226,3 @@ These are two views of the same system:
 | Adaptability | L7 (RAG, Agents, MCP, Memory) | "How do I extend it at runtime?" |
 | — | L3–L6 (Hardware, Formats, Engines, Tools) | Infrastructure that enables all tiers |
 
----
-
-## Document Index
-
-### Technology Stack (Layers 1–7)
-
-| # | Document | Topic |
-|:--|:--|:--|
-| 01 | [Model Architectures](./01-model-architectures.md) | Architectures × paradigms, JEPA, capabilities, inference parameters |
-| 02 | [Training & Adaptation](./02-training-adaptation.md) | Pre-training, SFT, RLHF/DPO/GRPO, LoRA/QLoRA, distillation |
-| 03 | [Hardware](./03-hardware.md) | CPU, GPU, TPU, LPU, NPU, Apple Silicon, ASIC, Analog AI |
-| 04 | [Model Formats](./04-model-formats.md) | Weight/Interchange/Runtime formats, quantisation, deployment |
-| 05 | [Inference Engines](./05-inference-engines.md) | llama.cpp, vLLM, SGLang, TGI, TensorRT-LLM, edge runtimes |
-| 06 | [Tools & Environments](./06-tools.md) | Model servers, desktop apps, cloud assistants, AI IDEs, CLI agents, no-code |
-| 07 | [LLM Extensions](./07-llm-extensions.md) | Agents, MCP, RAG, Memory, Function Calling, A2A |
-
-### Living Stack (Tiers L1–L3)
-
-| # | Document | Topic |
-|:--|:--|:--|
-| L1 | [Foundation](./L1-foundation.md) | Base models, pre-training, CPT, model selection guide |
-| L2 | [Alignment](./L2-alignment.md) | SFT, RLHF, DPO, GRPO, KTO, LoRA/QLoRA, distillation, inference-time scaling |
-| L3 | [Adaptability](./L3-adaptability.md) | RAG pipeline, agents, MCP, A2A, memory, RAG vs fine-tuning |
-
