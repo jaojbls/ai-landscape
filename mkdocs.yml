@@ -31,5 +31,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
 
-# No nav block is needed! MkDocs will automatically use index.md 
-# and the Table of Contents will populate the left sidebar perfectly.
+plugins:
+  - search
+  - macros
+
+# No nav block needed. MkDocs will use index.md as the single page.
