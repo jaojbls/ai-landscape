@@ -25,6 +25,9 @@ theme:
     - toc.integrate
 
 markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
@@ -35,4 +38,5 @@ plugins:
   - search
   - include-markdown
 
-# No nav block needed. MkDocs will use index.md as the single page.
+nav:
+  - 'AI Landscape': index.md

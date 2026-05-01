@@ -1,10 +1,10 @@
-# 🧱 AI Building Blocks — Overview
+# 🧱 Building Blocks of AI v2 — Overview
 
 > **Main entry point.** Start here for the big picture, then follow links to the deep-dives.
 
 ---
 
-### The AI Stack: 7 Layers
+## The AI Stack: 7 Layers
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -152,7 +152,7 @@
 
 ---
 
-### The Full Path: End-to-End Example
+## The Full Path: End-to-End Example
 
 ```
 1. Model:      Llama 3.1 70B (Transformer LLM, autoregressive, MoE)
@@ -166,7 +166,7 @@
 
 ---
 
-### The Living Stack — A Second View
+## The Living Stack — A Second View
 
 The 7-layer stack above is a **technology catalog** — "what are the building blocks?" The Living Stack is a **practitioner workflow** — "how do I customize AI for my use case?"
 
@@ -217,7 +217,7 @@ These are two views of the same system:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-#### How the Two Stacks Relate
+### How the Two Stacks Relate
 
 | Living Stack Tier | Maps To Layers | Perspective |
 |:--|:--|:--|
@@ -227,6 +227,8 @@ These are two views of the same system:
 | — | L3–L6 (Hardware, Formats, Engines, Tools) | Infrastructure that enables all tiers |
 
 ---
+
+## Document Index
 
 
 ## AI Stack Layers
