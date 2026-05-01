@@ -11,6 +11,12 @@
   color: var(--md-default-fg-color);
 }
 
+/* Ensure the top title (now an H2) looks like a massive H1 */
+.md-typeset h2:first-child {
+  font-size: 2em;
+  margin-top: 0 !important;
+}
+
 /* Sub-Chapters (H3: L1 Model Architectures, T1 Foundation) */
 .md-typeset h3 {
   margin-top: 3rem !important;

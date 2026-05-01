@@ -1,4 +1,4 @@
-# 🧱 AI Building Blocks — Overview
+## 🧱 AI Building Blocks — Overview
 
 > **Main entry point.** Start here for the big picture, then follow links to the deep-dives.
 

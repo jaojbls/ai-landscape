@@ -2,6 +2,9 @@ site_name: AI Landscape
 site_description: Documentation for AI architectures, tools, and foundations.
 site_url: https://jaojbls.github.io/ai-landscape/
 
+nav:
+  - 📚 Full Reference: index.md
+
 theme:
   name: material
   palette:
