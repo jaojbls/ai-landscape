@@ -9,7 +9,6 @@
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 1: MODEL ARCHITECTURES (The Brains)                     │
-│  → Deep-dive: 01-model-architectures.md                        │
 │                                                                 │
 │  Architectures:                                                 │
 │  • Transformer (autoregressive) — GPT, Claude, Llama, Gemini    │
@@ -33,7 +32,6 @@
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 2: TRAINING & ADAPTATION (The Evolution)                │
-│  → Deep-dive: 02-training-adaptation.md                        │
 │                                                                 │
 │  2A. Pre-Training (from scratch)                                │
 │      → Trillions of tokens, $$$ millions, only for labs         │
@@ -56,7 +54,6 @@
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 3: HARDWARE & COMPUTE (The Body)                        │
-│  → Deep-dive: 03-hardware.md                                   │
 │                                                                 │
 │  • CPU (Intel, AMD, ARM) — GGUF inference, no GPU needed        │
 │  • GPU (NVIDIA, AMD) — training + batch inference               │
@@ -71,7 +68,6 @@
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 4: MODEL FORMATS & QUANTISATION (The Compression)       │
-│  → Deep-dive: 04-model-formats.md                              │
 │                                                                 │
 │  Weight Formats:     SafeTensors, GGUF                          │
 │  Interchange:        ONNX (cross-platform portability)          │
@@ -87,7 +83,6 @@
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 5: INFERENCE ENGINES (The Runtime)                      │
-│  → Deep-dive: 05-inference-engines.md                          │
 │                                                                 │
 │  Local:   llama.cpp, MLX, ExLlamaV2, bitnet.cpp (1.58-bit)     │
 │  Server:  vLLM, SGLang, TGI, TensorRT-LLM, Triton              │
@@ -99,7 +94,6 @@
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 6: TOOLS & ENVIRONMENTS (The Interface)                 │
-│  → Deep-dive: 06-tools.md                                      │
 │                                                                 │
 │  6A. Model Servers (backend, no UI)                              │
 │      • Ollama, LocalAI, Foundry Local, Lemonade                 │
@@ -129,7 +123,6 @@
                                ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  LAYER 7: EXTENSIONS & CAPABILITIES (The Intelligence)         │
-│  → Deep-dive: 07-llm-extensions.md                             │
 │                                                                 │
 │  7A. Agents                                                     │
 │      • Single-agent, multi-agent, planner-executor              │
@@ -177,20 +170,17 @@ These are two views of the same system:
 │  THE LIVING STACK                                               │
 │                                                                 │
 │  ┌───────────────────────────────────────────────────────────┐  │
-│  │  TIER 3: ADAPTABILITY (changes daily)                     │  │
-│  │  → Deep-dive: L3-adaptability.md                          │  │
+│  │  TIER 1: FOUNDATION (changes yearly)                      │  │
 │  │                                                           │  │
-│  │  • RAG — inject external knowledge at runtime             │  │
-│  │  • Agents — plan, use tools, iterate autonomously         │  │
-│  │  • MCP / A2A — universal tool and agent protocols         │  │
-│  │  • Memory — persistence across sessions                   │  │
+│  │  • Base model selection (Llama, GPT, Claude, Gemini)      │  │
+│  │  • Pre-training (labs only, $5M–$100M+)                   │  │
+│  │  • Continued pre-training (domain adaptation)             │  │
 │  │                                                           │  │
-│  │  ⚡ Cost: $0–$1K  |  Speed: hours  |  Skill: any dev      │  │
+│  │  🏗️ Cost: $5M+  |  Speed: months  |  Skill: PhD team     │  │
 │  └───────────────────────────────────────────────────────────┘  │
-│                              ▲                                  │
+│                              ▼                                  │
 │  ┌───────────────────────────────────────────────────────────┐  │
 │  │  TIER 2: ALIGNMENT (changes weekly/monthly)               │  │
-│  │  → Deep-dive: L2-alignment.md                             │  │
 │  │                                                           │  │
 │  │  • SFT — teach format, style, instruction-following       │  │
 │  │  • RLHF / DPO / GRPO — teach quality and preferences     │  │
@@ -199,16 +189,16 @@ These are two views of the same system:
 │  │                                                           │  │
 │  │  💰 Cost: $10–$50K  |  Speed: days  |  Skill: ML eng      │  │
 │  └───────────────────────────────────────────────────────────┘  │
-│                              ▲                                  │
+│                              ▼                                  │
 │  ┌───────────────────────────────────────────────────────────┐  │
-│  │  TIER 1: FOUNDATION (changes yearly)                      │  │
-│  │  → Deep-dive: L1-foundation.md                            │  │
+│  │  TIER 3: ADAPTABILITY (changes daily)                     │  │
 │  │                                                           │  │
-│  │  • Base model selection (Llama, GPT, Claude, Gemini)      │  │
-│  │  • Pre-training (labs only, $5M–$100M+)                   │  │
-│  │  • Continued pre-training (domain adaptation)             │  │
+│  │  • RAG — inject external knowledge at runtime             │  │
+│  │  • Agents — plan, use tools, iterate autonomously         │  │
+│  │  • MCP / A2A — universal tool and agent protocols         │  │
+│  │  • Memory — persistence across sessions                   │  │
 │  │                                                           │  │
-│  │  🏗️ Cost: $5M+  |  Speed: months  |  Skill: PhD team     │  │
+│  │  ⚡ Cost: $0–$1K  |  Speed: hours  |  Skill: any dev      │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │                                                                 │
 │  The model itself changes slowly.                               │
@@ -221,8 +211,8 @@ These are two views of the same system:
 
 | Living Stack Tier | Maps To Layers | Perspective |
 |:--|:--|:--|
-| Foundation | L1 (Architectures) + L2 (Pre-training, CPT) | "What base model do I choose?" |
-| Alignment | L2 (SFT, DPO, LoRA, Distillation) | "How do I customize its behaviour?" |
-| Adaptability | L7 (RAG, Agents, MCP, Memory) | "How do I extend it at runtime?" |
+| T1 Foundation | L1 (Architectures) + L2 (Pre-training, CPT) | "What base model do I choose?" |
+| T2 Alignment | L2 (SFT, DPO, LoRA, Distillation) | "How do I customize its behaviour?" |
+| T3 Adaptability | L7 (RAG, Agents, MCP, Memory) | "How do I extend it at runtime?" |
 | — | L3–L6 (Hardware, Formats, Engines, Tools) | Infrastructure that enables all tiers |
 
